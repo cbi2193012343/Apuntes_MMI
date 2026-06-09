@@ -1,0 +1,908 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\title{Transcripcion parcial de fotos}
+\author{Apuntes de Modelos Matematicos I}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{quote}
+Nota: esta es una transcripcion parcial y acumulativa. Las fotos de baja resolucion
+se leyeron con varias pasadas; donde el texto era dudoso se dejaron marcas de
+incertidumbre o se priorizo la formula legible.
+\end{quote}
+
+\section*{Foto 1}
+\texttt{Fotos/photo\_2026-06-04\_00-09-12.jpg}
+
+\textbf{Contexto probable:} problema de juguete, ecuacion autonoma escalar, campo de pendientes y estabilidad del equilibrio.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Problema de juguete''.
+    \item [Texto superior izquierdo muy borroso; solo se distinguen fragmentos como ``Decimos que...''].
+    \item \[
+    \frac{du}{dt}=f(u), \qquad \frac{d\mu}{dt}=f(\mu)
+    \]
+    \item Caso 1:
+    \[
+    \frac{du}{dt}=ru, \qquad r\in\mathbb{R}
+    \]
+    \item Se dibujan las graficas de \(f(u)=ru\) para \(r>0\), \(r<0\) y \(r=0\), junto con el campo de pendientes y la linea de fase.
+    \item Idea que se repite en el dibujo: si \(r>0\), el equilibrio \(u=0\) es inestable; si \(r<0\), es estable; si \(r=0\), el criterio lineal no decide.
+\end{itemize}
+
+\section*{Foto 2}
+\texttt{Fotos/photo\_2026-06-04\_00-09-39.jpg}
+
+\textbf{Contexto probable:} linealizacion de sistemas en dos variables, puntos de equilibrio y jacobiano.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item \[
+    x' = F(x), \qquad x_0 \text{ pto. de equilibrio}, \qquad F(x_0)=0.
+    \]
+    \item ``Calculamos el jacobiano de''
+    \[
+    F=(F_1(x,y),F_2(x,y)).
+    \]
+    \item
+    \[
+    J(x)=
+    \begin{pmatrix}
+    \dfrac{\partial F_1}{\partial x}(x,y) & \dfrac{\partial F_1}{\partial y}(x,y)\\[6pt]
+    \dfrac{\partial F_2}{\partial x}(x,y) & \dfrac{\partial F_2}{\partial y}(x,y)
+    \end{pmatrix}
+    \]
+    \item Ejemplo:
+    \[
+    x' = x^2-y^2-1, \qquad y' = 2y
+    \]
+    \item
+    \[
+    DF(x)=J(x)=
+    \begin{pmatrix}
+    2x & -2y\\
+    0 & 2
+    \end{pmatrix}
+    \]
+    \item Puntos de equilibrio:
+    \[
+    x^2-y^2-1=0, \qquad 2y=0
+    \]
+    \item Como \(y=0\), entonces \(x^2-1=0\), y por tanto \(x=\pm 1\).
+    \item Se concluye:
+    \[
+    X_0=(1,0), \qquad X_1=(-1,0).
+    \]
+\end{itemize}
+
+\section*{Foto 3}
+\texttt{Fotos/photo\_2026-06-04\_00-09-25.jpg}
+
+\textbf{Contexto probable:} reescalamiento del modelo logistico para llevarlo a la forma normalizada.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item \[
+    \frac{dU}{dt}=rU\left(1-\frac{U}{n}\right)=rU-\frac{r}{n}U^2
+    \]
+    \item ``Dos puntos de equilibrio'':
+    \[
+    U_0=0, \qquad U_1=n
+    \]
+    \item ``Hagamos: cambio de variable espacial y temporal''.
+    \item Definicion de la variable adimensional:
+    \[
+    M=\phi(U)=\frac{U}{n}, \qquad \phi^{-1}(M)=nM
+    \]
+    \item Reescritura con cambio temporal:
+    \[
+    \tau=rt, \qquad t=\frac{\tau}{r}, \qquad \frac{dt}{d\tau}=\frac{1}{r}
+    \]
+    \item Forma normalizada:
+    \[
+    \frac{dM}{d\tau}=M(1-M)
+    \]
+    \item La pregunta escrita al centro parece ser algo como: ``¿Por que se elige el cambio temporal?''.
+\end{itemize}
+
+\section*{Foto 4}
+\texttt{Fotos/photo\_2026-06-04\_00-09-16.jpg}
+
+\textbf{Contexto probable:} modelo logistico, crecimiento intrinseco y cosecha constante.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Titulo: ``Modelo logistico''.
+    \item Forma clasica:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{u}\right)
+    \]
+    \item Forma cuadratica equivalente:
+    \[
+    \frac{dN}{dt}=\alpha N+\beta N^2
+    \]
+    \item ``Tasa de crecimiento intrinseca''.
+    \item Reescritura:
+    \[
+    \frac{dN}{dt}=\alpha N\left(1-\frac{\beta}{\alpha}N\right)
+    =\alpha N\left(1-\frac{N}{K}\right)
+    \]
+    \item Hay esquemas de ``entrada/salida'' y una interpretacion de \( \beta N^2 \) como termino de salida.
+    \item En la parte derecha aparece el modelo con cosecha:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-H
+    \]
+    \item Puntos criticos:
+    \[
+    rN\left(1-\frac{N}{K}\right)-H=0
+    \]
+    \[
+    -\frac{r}{K}N^2+rN-H=0
+    \]
+    \item Solucion cuadratica:
+    \[
+    N=\frac{K}{2}\left(1\pm \sqrt{1-\frac{4H}{rK}}\right)
+    \]
+    \item Casos anotados:
+    \begin{itemize}
+        \item un unico equilibrio si \(H=\frac{rK}{4}\),
+        \item no hay equilibrios reales si \(H>\frac{rK}{4}\),
+        \item dos equilibrios reales si \(H<\frac{rK}{4}\).
+    \end{itemize}
+\end{itemize}
+
+\section*{Foto 5}
+\texttt{Fotos/photo\_2026-06-04\_00-09-18.jpg}
+
+\textbf{Contexto probable:} normalizacion del modelo logistico y observaciones sobre el cambio de variables.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se repite la ecuacion logistico-normalizada:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{n}\right)
+    \]
+    \item ``Dos puntos de equilibrio'':
+    \[
+    N_0=0, \qquad N_1=n
+    \]
+    \item ``Hagamos: cambio de variable espacial y temporal''.
+    \item Cambio de variable:
+    \[
+    M=\phi(N)=\frac{N}{n}, \qquad \phi^{-1}(M)=nM
+    \]
+    \item Relacion entre derivadas:
+    \[
+    \frac{dN}{dt}=n\frac{dM}{dt}
+    \]
+    \item Con el cambio temporal:
+    \[
+    \tau=rt, \qquad \frac{dt}{d\tau}=\frac{1}{r}
+    \]
+    \item Forma adimensional:
+    \[
+    \frac{dM}{d\tau}=M(1-M)
+    \]
+    \item La nota al centro deja ver la idea de que \(M\) y \(N\) representan la misma solucion en escalas distintas.
+\end{itemize}
+
+\section*{Foto 6}
+\texttt{Fotos/photo\_2026-06-04\_00-09-20.jpg}
+
+\textbf{Contexto probable:} forma logistica desde el modelo cuadratico, y analisis de la ecuacion con cosecha.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)
+    \]
+    \item \[
+    \frac{dN}{dt}=\alpha N+\beta N^2
+    \]
+    \item ``Tasa de crecimiento intrinseca''.
+    \item Reescrituras:
+    \[
+    =\alpha N\left(1-\frac{\beta}{\alpha}N\right)
+    =\alpha N\left(1-\frac{N}{K}\right)
+    \]
+    \item En el dibujo se interpreta un proceso de ``entrada'' y ``salida'' con un termino no lineal proporcional a \(N^2\).
+    \item Hacia la derecha aparece el modelo con cosecha:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-H
+    \]
+    \item Se dibuja la parabola \(f(N)=rN(1-N/K)-H\) y varias lineas de fase para los casos \(a=0\), \(a>0\), \(a<0\) de una bifurcacion tipo silla-nodo.
+\end{itemize}
+
+\section*{Foto 7}
+\texttt{Fotos/photo\_2026-06-04\_00-09-23.jpg}
+
+\textbf{Contexto probable:} analisis biologico del modelo logistico con cosecha constante.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se trabaja con
+    \[
+    f(N)=rN\left(1-\frac{N}{K}\right)-H
+    =-\frac{r}{K}N^2+rN-H
+    \]
+    \item Condicion de dos equilibrios:
+    \[
+    H<\frac{rK}{4}
+    \]
+    \item La grafica muestra una parabola hacia abajo y una linea de fase con un equilibrio inestable y otro estable.
+    \item ``Analisis biologico''.
+    \item La lectura global es:
+    \begin{itemize}
+        \item si la poblacion inicial esta por encima del umbral critico, la solucion tiende al equilibrio estable superior;
+        \item si la poblacion inicial esta por debajo del umbral, la poblacion puede extinguirse en tiempo finito;
+        \item el equilibrio inferior actua como separatriz o punto umbral.
+    \end{itemize}
+    \item En la esquina derecha se alcanza a leer ``2\(^\circ\) caso'' y ``3\(^\circ\) caso'', lo que sugiere que se estaban enumerando escenarios segun la condicion inicial.
+\end{itemize}
+
+\section*{Foto 8}
+\texttt{Fotos/photo\_2026-06-04\_00-09-28.jpg}
+
+\textbf{Contexto probable:} analisis dimensional: unidades, dimensiones y ejemplo con presion.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Observamos un modelo cuyos resultados sean adimensionales del sistema de unidades''.
+    \item ``Para ello hacemos:''
+    \begin{enumerate}[leftmargin=*]
+        \item Unidades basicas del SI: metro (m), kilogramo (kg), segundo (s), ampere (A), mol (mol), candela (cd).
+        \item Unidad derivada: velocidad \(m/s\), fuerza \(N\).
+        \item Dimensiones: representan la estructura de una magnitud o fenomeno. Longitud \([L]\), tiempo \([T]\), masa \([M]\).
+    \end{enumerate}
+    \item Tabla de unidades basicas y derivadas.
+    \item Ejemplo:
+    \[
+    \text{Presion}=\frac{\text{Fuerza}}{\text{Area}}
+    \]
+    \[
+    F=ma \sim \frac{kg\cdot m}{s^2}, \qquad A=m^2
+    \]
+    \item Dimensiones:
+    \[
+    [F]=[M][L][T]^{-2}
+    \]
+    \[
+    [P]=[M][L]^{-1}[T]^{-2}
+    \]
+    \item Nota final visible: ``Tarea: Como se define en N o Joule?''.
+\end{itemize}
+
+\section*{Foto 9}
+\texttt{Fotos/photo\_2026-06-04\_00-13-25.jpg}
+
+\textbf{Contexto probable:} graficas de soluciones y linea de fase del modelo logístico adimensional con cosecha.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se observan curvas de solucion con forma sigmoidea y varias trayectorias de fase.
+    \item Aparecen etiquetas en la pizarra:
+    \[
+    N=K, \qquad N=\frac{K}{2}, \qquad N=0, \qquad N_0=N(0)
+    \]
+    \item En la parte inferior se distingue la funcion de fase:
+    \[
+    f(M)=M(1-M)
+    \]
+    \item Tambien se ve una linea de fase con los puntos \(M=0\) y \(M=1\).
+    \item La lectura general es la del modelo logistico reescalado, con soluciones que se acercan a los equilibrios visibles en la grafica.
+\end{itemize}
+
+\section*{Foto 10}
+\texttt{Fotos/photo\_2026-06-04\_00-13-27.jpg}
+
+\textbf{Contexto probable:} deduccion del modelo adimensional con cosecha y definicion del parametro \(\lambda\).
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Cambio temporal:
+    \[
+    t=\frac{\tau}{r}, \qquad \tau=rt
+    \]
+    \item Relacion de derivadas:
+    \[
+    \frac{dM}{d\tau}=\frac{dM}{dt}\frac{dt}{d\tau}
+    =\frac{1}{r}\frac{dM}{dt}
+    \]
+    \item Sustitucion del modelo:
+    \[
+    \frac{dM}{d\tau}
+    =\frac{1}{r}\left[rM(1-M)-\frac{H}{K}\right]
+    \]
+    \item Resultado final:
+    \[
+    \frac{dM}{d\tau}=M(1-M)-\frac{H}{rK}
+    \]
+    \item Se introduce
+    \[
+    \lambda=\frac{H}{rK}
+    \]
+    y por tanto
+    \[
+    \frac{dM}{d\tau}=M(1-M)-\lambda.
+    \]
+    \item Nota al margen: ``\textit{Voila!}''
+    \item Tarea escrita en verde:
+    \begin{quote}
+        ``Realizar el analisis completo semejante al realizado sin adimensionalizacion.''
+    \end{quote}
+\end{itemize}
+
+\section*{Foto 11}
+\texttt{Fotos/photo\_2026-06-04\_00-09-26.jpg}
+
+\textbf{Contexto probable:} adimensionalizacion del modelo logistico con cosecha y motivacion de por que conviene reescalar.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Adimensionalizacion: Herramientas del proceso de modelacion''.
+    \item ``Objetivo: En los modelos vistos hasta el momento aparecen parametros''.
+    \item En el modelo logistico con cosecha:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-H
+    \]
+    \item La dinamica depende de \(H\) y aparece el umbral
+    \[
+    H<\frac{rK}{4}.
+    \]
+    \item Se plantea el cambio de variable
+    \[
+    u=\frac{N}{K}
+    \]
+    y el cambio temporal
+    \[
+    \tau=rt.
+    \]
+    \item El modelo adimensional queda, en esencia,
+    \[
+    \frac{du}{d\tau}=u(1-u)-\lambda,
+    \qquad \lambda=\frac{H}{rK}.
+    \]
+    \item Idea central escrita en el pizarron: ``El nuevo modelo no depende de parametros de escala''.
+    \item Abajo se aclara que la pregunta es por que se hace un reescalamiento.
+\end{itemize}
+
+\section*{Foto 12}
+\texttt{Fotos/photo\_2026-06-04\_00-09-34.jpg}
+
+\textbf{Contexto probable:} dinamica de dos poblaciones y modelo de Lotka-Volterra con respuesta funcional.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Los niveles cero'' y lineas de fase para \(f(y)=ry\).
+    \item Si \(r>0\), entonces \(N_0=0\) es inestable.
+    \item Si \(r<0\), entonces \(N_0=0\) es estable.
+    \item Se introduce ``Dinamica de dos poblaciones''.
+    \item Modelo base de crecimiento logistico:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)
+    \]
+    \item Con competencia / efecto Allee:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\left(\frac{N}{A}-1\right)-H
+    \]
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\left(\frac{N}{A}-1\right)-qEN
+    \]
+    \item Se menciona el modelo presa-depredador:
+    \[
+    \frac{dP}{dt}=\alpha P-\beta PD,
+    \qquad
+    \frac{dD}{dt}=-\gamma D+\delta PD.
+    \]
+    \item Tambien aparece la version con crecimiento logistico de la presa:
+    \[
+    \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right)-\beta PD,
+    \qquad
+    \frac{dD}{dt}=-\gamma D+\delta PD.
+    \]
+    \item El dibujo superior asocia \(f(y)=ry\) con estabilidad del origen dependiendo del signo de \(r\).
+\end{itemize}
+
+\section*{Foto 13}
+\texttt{Fotos/photo\_2026-06-04\_00-09-36.jpg}
+
+\textbf{Contexto probable:} sistemas autonomos en el plano y sistemas de tipo Kolmogorov.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Sistemas de ecuaciones diferenciales autonomos''.
+    \item Forma general en el plano:
+    \[
+    \frac{dx}{dt}=P(x,y), \qquad \frac{dy}{dt}=Q(x,y).
+    \]
+    \item Se enfatiza que esto asociado a un campo vectorial en el plano
+    \[
+    F:\mathbb{R}^2 \to \mathbb{R}^2, \qquad F(x,y)=(P(x,y),Q(x,y)).
+    \]
+    \item Forma de un sistema de tipo Kolmogorov:
+    \[
+    \frac{dx}{dt}=x\,f_1(x,y), \qquad \frac{dy}{dt}=y\,f_2(x,y).
+    \]
+    \item En la pizarra se remarca que reflejan una caracteristica biologica importante.
+    \item Se dibujan retratos de fase con equilibrio tipo silla, foco/atractor y repulsor, para ilustrar la variedad de comportamientos.
+\end{itemize}
+
+\section*{Foto 14}
+\texttt{Fotos/photo\_2026-06-04\_00-09-38.jpg}
+
+\textbf{Contexto probable:} dinamica local en sistemas no lineales y dos posibilidades: punto regular o equilibrio.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``El mundo en un mundo no lineal''.
+    \item \[
+    x' = F(x) \quad \text{en } \mathbb{R}^n,
+    \qquad F:\mathbb{R}^n \to \mathbb{R}^n,\ \text{de clase } C^1.
+    \]
+    \item ``Problema general: Entender la dinamica global de las soluciones de \((*)\)''.
+    \item ``Dinamica local: Dado \(x_0\in\mathbb{R}^n\), como es el comportamiento de las soluciones cerca de \(x_0\)?''.
+    \item Posibilidades:
+    \begin{enumerate}[leftmargin=*]
+        \item \(x_0\) es un punto regular, \(F(x_0)\neq 0\).
+        \item \(x_0\) es un punto de equilibrio, \(F(x_0)=0\).
+    \end{enumerate}
+    \item Se comienza el caso \(x_0\) punto regular.
+\end{itemize}
+
+\section*{Foto 15}
+\texttt{Fotos/photo\_2026-06-04\_00-13-30.jpg}
+
+\textbf{Contexto probable:} lineas de fase de una ecuacion autonoma escalar y estabilidad por linealizacion.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item \[
+    \frac{dy}{dt}=f(y), \qquad f:\mathbb{R}\to\mathbb{R}
+    \]
+    \item Se dibuja la linea de fase para \(f(y_0)=0\).
+    \item Para \(f(y)=ry\):
+    \begin{itemize}
+        \item si \(r>0\), entonces \(N_0=0\) es inestable;
+        \item si \(r<0\), entonces \(N_0=0\) es estable.
+    \end{itemize}
+    \item Por linealizacion:
+    \[
+    f'(N_0)=r.
+    \]
+    \item Si \(r>0\), entonces \(f'(N_0)>0\) y el equilibrio es inestable.
+    \item Si \(r<0\), entonces \(f'(N_0)<0\) y el equilibrio es estable.
+\end{itemize}
+
+\section*{Foto 16}
+\texttt{Fotos/photo\_2026-06-04\_00-13-31.jpg}
+
+\textbf{Contexto probable:} modelo presa-depredador y preparacion del modelo Lotka-Volterra.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Titulo: ``Dinamica de dos poblaciones''.
+    \item Se parte del crecimiento logistico:
+    \[
+    \frac{dN}{dt}=rN \ \longrightarrow\ \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right).
+    \]
+    \item Luego se introducen modificaciones de competencia / Allee:
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\left(\frac{N}{A}-1\right)-H
+    \]
+    \[
+    \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\left(\frac{N}{A}-1\right)-qEN.
+    \]
+    \item ``Modelo de Lotka-Volterra (1925, 1926)''.
+    \item Variables:
+    \[
+    P(t) \text{ poblacion de presa al tiempo } t,
+    \qquad
+    D(t) \text{ poblacion de depredador}.
+    \]
+    \item Ecuaciones clasicas:
+    \[
+    \frac{dP}{dt}=\alpha P-\beta PD,
+    \qquad
+    \frac{dD}{dt}=-\gamma D+\delta PD.
+    \]
+    \item Se anota que existen distintas respuestas funcionales.
+\end{itemize}
+
+\section*{Foto 17}
+\texttt{Fotos/photo\_2026-06-04\_00-13-33.jpg}
+
+\textbf{Contexto probable:} formulaciones generales del sistema presa-depredador con respuesta funcional.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item El modelo logistico de la presa se modifica como
+    \[
+    \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right)-\beta PD.
+    \]
+    \item La ecuacion del depredador queda
+    \[
+    \frac{dD}{dt}=-\gamma D+\delta PD.
+    \]
+    \item Se sugiere una respuesta funcional mas general \(f(P)\), de modo que
+    \[
+    \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right)-f(P)D,
+    \qquad
+    \frac{dD}{dt}=-\gamma D+\delta f(P)D.
+    \]
+    \item En el pizarron se comparan distintos tipos de respuesta funcional con dibujos cualitativos.
+\end{itemize}
+
+\section*{Foto 18}
+\texttt{Fotos/photo\_2026-06-04\_00-13-34.jpg}
+
+\textbf{Contexto probable:} sistema de dos poblaciones con respuesta funcional y ejemplos de campo de fase.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se ve la misma estructura general:
+    \[
+    \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right)-f(P)D,
+    \qquad
+    \frac{dD}{dt}=-\gamma D+\delta f(P)D.
+    \]
+    \item El caso lineal tipo Lotka-Volterra aparece como \(f(P)=P\).
+    \item En los dibujos se muestran varios retratos de fase asociados a diferentes respuestas funcionales.
+    \item Tambien aparece la idea de que el modelo depende de una respuesta funcional, no solo de un termino bilineal \(PD\).
+\end{itemize}
+
+\section*{Foto 19}
+\texttt{Fotos/photo\_2026-06-04\_00-13-35.jpg}
+
+\textbf{Contexto probable:} sistemas autonomos en el plano, linealizacion y ejemplos de Jacobiano.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Titulo general: ``Sistemas de ecuaciones diferenciales autonomos''.
+    \item Forma del sistema:
+    \[
+    \frac{dx}{dt}=P(x,y)=a_{11}x+a_{12}y,
+    \qquad
+    \frac{dy}{dt}=Q(x,y)=a_{21}x+a_{22}y.
+    \]
+    \item Se escribe
+    \[
+    F(x,y)=A\binom{x}{y},
+    \qquad
+    A=\begin{pmatrix}a_{11}&a_{12}\\ a_{21}&a_{22}\end{pmatrix}.
+    \]
+    \item Desarrollos de Taylor cerca de un punto \(x_0=(x_0,y_0)\) para linearizar alrededor de un equilibrio.
+    \item ``Reflejan una caracteristica biologica importante''.
+    \item Se dibujan retratos de fase tipo silla, atractor y repulsor.
+\end{itemize}
+
+\section*{Foto 20}
+\texttt{Fotos/photo\_2026-06-04\_00-13-36.jpg}
+
+\textbf{Contexto probable:} ejemplo de sistema lineal y estabilidad por autovalores reales.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se trabaja con la linealizacion
+    \[
+    Y' = DF(x_0)Y = J(x_0)Y.
+    \]
+    \item En el ejemplo se obtiene un jacobiano diagonal:
+    \[
+    DF(x_0)=
+    \begin{pmatrix}
+    2 & 0\\
+    0 & 2
+    \end{pmatrix},
+    \qquad
+    DF(x_1)=
+    \begin{pmatrix}
+    -2 & 0\\
+    0 & 2
+    \end{pmatrix}.
+    \]
+    \item Se indica el caso de autovalor doble \(\lambda_{1,2}=2\).
+    \item Para \((A-\lambda I)V=0\) se obtiene
+    \[
+    \det(A-\lambda I)=(2-\lambda)^2.
+    \]
+    \item Se identifica el caso como una fuente.
+\end{itemize}
+
+\section*{Foto 21}
+\texttt{Fotos/photo\_2026-06-04\_00-13-37.jpg}
+
+\textbf{Contexto probable:} segundo ejemplo de linealizacion con autovalores distintos y clasificacion de la solucion.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se considera de nuevo el jacobiano en un equilibrio.
+    \item El polinomio caracteristico aparece como
+    \[
+    p(\lambda)=\det(A-\lambda I)=-(\lambda+2)(\lambda-2),
+    \]
+    por lo que
+    \[
+    \lambda_1=2,\qquad \lambda_2=-2.
+    \]
+    \item Vectores propios:
+    \[
+    V_1=\binom{1}{0},
+    \qquad
+    V_2=\binom{0}{1}.
+    \]
+    \item Soluciones del sistema lineal:
+    \[
+    y_1(t)=e^{2t}V_1,
+    \qquad
+    y_2(t)=e^{-2t}V_2.
+    \]
+    \item La clasificacion indicada en el dibujo es de tipo fuente/silla, segun el equilibrio considerado.
+\end{itemize}
+
+\section*{Foto 22}
+\texttt{Fotos/photo\_2026-06-04\_00-13-38.jpg}
+
+\textbf{Contexto probable:} referencias bibliograficas y paso del sistema lineal al estudio local de sistemas no lineales.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se listan referencias:
+    \begin{itemize}
+        \item Devaney, Hirsch, Smale.
+        \item ``Differential equations, dynamical systems and linear algebra''.
+        \item ``Dynamical systems''.
+    \end{itemize}
+    \item Se vuelve a enfatizar:
+    \[
+    X'=AX \quad \text{en } \mathbb{R}^n,
+    \]
+    y la solucion general en terminos de exponentiales de matriz.
+    \item A la derecha se introduce
+    \[
+    X' = F(X) \quad \text{en } \mathbb{R}^n,
+    \qquad F:\mathbb{R}^n\to\mathbb{R}^n,\ \text{de clase } C^1.
+    \]
+    \item Problema general: entender la dinamica global de las soluciones de \((*)\).
+    \item Dinamica local: dado \(x_0\in\mathbb{R}^n\), estudiar el comportamiento de las soluciones cerca de \(x_0\).
+    \item Posibilidades:
+    \[
+    F(x_0)\neq 0 \quad \text{o} \quad F(x_0)=0.
+    \]
+\end{itemize}
+
+\section*{Foto 23}
+\texttt{Fotos/photo\_2026-06-04\_00-13-39.jpg}
+
+\textbf{Contexto probable:} version ampliada de la dinamica local con ejemplos geometricos.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se repite la idea de que \(X'=F(X)\) define un campo vectorial en \(\mathbb{R}^n\).
+    \item Se muestran trayectorias tipo nodo, espiral y silla.
+    \item En el lado derecho se enuncia de nuevo:
+    \[
+    X_0 \text{ es punto regular si } F(X_0)\neq 0,
+    \qquad
+    X_0 \text{ es equilibrio si } F(X_0)=0.
+    \]
+    \item El objetivo es clasificar el comportamiento cerca de esos puntos.
+\end{itemize}
+
+\section*{Foto 24}
+\texttt{Fotos/photo\_2026-06-04\_00-13-40.jpg}
+
+\textbf{Contexto probable:} continuacion de la dinamica local con retratos de fase y linealizacion.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se conserva el marco de sistemas no lineales en \(\mathbb{R}^n\).
+    \item Se presentan diagramas de trayectorias cercanas a una region regular y a un equilibrio.
+    \item La idea de fondo es que el flujo cerca de un punto regular es equivalente a un campo no nulo, mientras que cerca de un equilibrio se requiere linealizacion.
+\end{itemize}
+
+\section*{Foto 25}
+\texttt{Fotos/photo\_2026-06-04\_00-13-44.jpg}
+
+\textbf{Contexto probable:} linealizacion de un sistema de dimension dos y jacobiano en un equilibrio.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se escribe
+    \[
+    X'=F(X), \qquad F \text{ de clase } C^1.
+    \]
+    \item Para \(X_0=(x_0,y_0)\) equilibrio,
+    \[
+    J(X_0)=DF(X_0)\in M_{2\times 2}.
+    \]
+    \item En el caso \(n=2\),
+    \[
+    J(X)=
+    \begin{pmatrix}
+    \dfrac{\partial F_1}{\partial x}(x,y) & \dfrac{\partial F_1}{\partial y}(x,y)\\[6pt]
+    \dfrac{\partial F_2}{\partial x}(x,y) & \dfrac{\partial F_2}{\partial y}(x,y)
+    \end{pmatrix}.
+    \]
+    \item Evaluando en \(X_0\):
+    \[
+    J(X_0)=
+    \begin{pmatrix}
+    \dfrac{\partial F_1}{\partial x}(x_0,y_0) & \dfrac{\partial F_1}{\partial y}(x_0,y_0)\\[6pt]
+    \dfrac{\partial F_2}{\partial x}(x_0,y_0) & \dfrac{\partial F_2}{\partial y}(x_0,y_0)
+    \end{pmatrix}.
+    \]
+\end{itemize}
+
+\section*{Foto 26}
+\texttt{Fotos/photo\_2026-06-04\_00-13-45.jpg}
+
+\textbf{Contexto probable:} ejemplo linealizado con autovalor doble y clasificacion por vectores propios.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se trata un ejemplo con
+    \[
+    x'=x^2-y^2-1,\qquad y'=2y
+    \]
+    y su jacobiano
+    \[
+    DF(x)=
+    \begin{pmatrix}
+    2x & -2y\\
+    0 & 2
+    \end{pmatrix}.
+    \]
+    \item Los puntos de equilibrio son
+    \[
+    X_0=(1,0),\qquad X_1=(-1,0).
+    \]
+    \item Para el sistema linealizado:
+    \[
+    Y'=DF(X_0)Y,
+    \]
+    y en el caso mostrado aparece un autovalor doble \(\lambda=2\).
+    \item Se calcula
+    \[
+    \det(A-\lambda I)=(2-\lambda)^2,
+    \]
+    con vectores propios coordenados en los ejes.
+\end{itemize}
+
+\section*{Foto 27}
+\texttt{Fotos/photo\_2026-06-04\_00-13-46.jpg}
+
+\textbf{Contexto probable:} linealizacion de un sistema no lineal y comparacion entre el sistema original y el sistema lineal.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se reescribe el problema para un equilibrio \(X_0\) y su jacobiano \(J(X_0)\).
+    \item Se observa el caso de autovalor doble y la forma
+    \[
+    (A-\lambda I)V=0.
+    \]
+    \item La conclusion es que la solucion linealizada tiene el mismo tipo cualitativo de comportamiento cerca del equilibrio.
+\end{itemize}
+
+\section*{Foto 28}
+\texttt{Fotos/photo\_2026-06-04\_00-13-47.jpg}
+
+\textbf{Contexto probable:} ejemplo con autovalores distintos, fuente, y reconstruccion de soluciones lineales.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Para el jacobiano del equilibrio se obtiene
+    \[
+    \lambda_1=2,\qquad \lambda_2=-2,
+    \]
+    con vectores propios
+    \[
+    V_1=\binom{1}{0},\qquad V_2=\binom{0}{1}.
+    \]
+    \item Soluciones particulares:
+    \[
+    y_1(t)=e^{2t}V_1,\qquad y_2(t)=e^{-2t}V_2.
+    \]
+    \item El retrato de fase mostrado corresponde a una fuente.
+\end{itemize}
+
+\section*{Foto 29}
+\texttt{Fotos/photo\_2026-06-04\_00-13-48.jpg}
+
+\textbf{Contexto probable:} formalizacion de la solucion general del sistema lineal y base de soluciones por autovalores/vectores propios.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Si \(A\) tiene \(n\) valores propios distintos \(\lambda_1,\dots,\lambda_n\) y vectores propios correspondientes \(v_1,\dots,v_n\), entonces las soluciones
+    \[
+    X_i(t)=e^{\lambda_i t}v_i
+    \]
+    son linealmente independientes.
+    \item La solucion general es una combinacion lineal de esas soluciones.
+    \item Se recuerda que si \(X'=AX\) y \(A v=\lambda v\), entonces
+    \[
+    X(t)=e^{\lambda t}v
+    \]
+    es solucion.
+\end{itemize}
+
+\section*{Foto 30}
+\texttt{Fotos/photo\_2026-06-04\_00-13-50.jpg}
+
+\textbf{Contexto probable:} ejemplo final de linealizacion con sistema no lineal y clasificacion por autovalores.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se vuelve a mostrar el ejemplo
+    \[
+    x'=x^2-y^2-1,\qquad y'=2y,
+    \]
+    con equilibria \((1,0)\) y \((-1,0)\).
+    \item Se compara el sistema no lineal con el sistema linealizado
+    \[
+    Y'=DF(X_0)Y.
+    \]
+    \item En el lado derecho se ve la descomposicion espectral del sistema lineal y la conclusion de tipo fuente.
+\end{itemize}
+
+\section*{Foto 31}
+\texttt{Fotos/photo\_2026-06-04\_00-13-51.jpg}
+
+\textbf{Contexto probable:} teorema de Hartman-Grobman y equivalencia topologica local.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item ``Teorema de Hartman-Grobman''.
+    \item Si \(X_0\) es un punto de equilibrio de
+    \[
+    X'=F(X),
+    \]
+    y \(J(X_0)=DF(X_0)\) no tiene valores propios con parte real cero, entonces las soluciones del sistema no lineal cerca de \(X_0\) son topologicamente equivalentes a las del sistema linealizado cerca de \(0\):
+    \[
+    V'=DF(X_0)V.
+    \]
+    \item Se introduce un homeomorfismo entre vecindades de \(X_0\) y de \(0\).
+\end{itemize}
+
+\section*{Foto 32}
+\texttt{Fotos/photo\_2026-06-04\_00-13-56.jpg}
+
+\textbf{Contexto probable:} cierre del teorema de Hartman-Grobman y efectos sobre el retrato de fase.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se refuerza la idea de que el comportamiento cualitativo cerca de un equilibrio hiperb\'olico se conserva por linealizacion.
+    \item Los dibujos acompañan la conclusion con retratos de fase alrededor de nodos, focos y sillas.
+\end{itemize}
+
+\section*{Foto 33}
+\texttt{Fotos/photo\_2026-06-04\_00-13-57.jpg}
+
+\textbf{Contexto probable:} resumen de dinamica local y clasificacion de puntos regulares y de equilibrio.
+
+\textbf{Transcripcion tentativa:}
+\begin{itemize}[leftmargin=*]
+    \item Se reitera que el problema general es entender la dinamica global de las soluciones de \(X'=F(X)\).
+    \item Dinamica local:
+    \[
+    \text{dado } X_0\in\mathbb{R}^n,\ \text{como es el comportamiento de las soluciones cerca de }X_0?
+    \]
+    \item Posibilidades:
+    \begin{enumerate}[leftmargin=*]
+        \item \(X_0\) es un punto regular, \(F(X_0)\neq 0\).
+        \item \(X_0\) es un punto de equilibrio, \(F(X_0)=0\).
+    \end{enumerate}
+\end{itemize}
+
+\end{document}

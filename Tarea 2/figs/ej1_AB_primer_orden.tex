@@ -1,0 +1,22 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,positioning,babel}
+\pagestyle{empty}
+\begin{document}
+\begin{center}\begin{tikzpicture}
+\begin{axis}[width=14cm,height=8cm,xmin=0,xmax=10,ymin=0,ymax=11,axis lines=left,xlabel={$t$},ylabel={Concentración},legend style={draw=none,at={(0.98,0.98)},anchor=north east,font=\small},samples=200]
+\addplot[thick,blue!75!black,domain=0:10] {10*exp(-0.5*x)};\addlegendentry{$A(t)$}
+\addplot[thick,orange!85!black,domain=0:10] {10*(1-exp(-0.5*x))};\addlegendentry{$B(t)$}
+\addplot[thick,gray!70,dashed] coordinates {(0,10) (10,10)};\addlegendentry{$A+B=A_0$}
+\addplot[thick,black!60,dotted] coordinates {(1.386,0) (1.386,11)};
+\node[anchor=west,black!70] at (axis cs:1.46,9.5) {$t_{1/2}\approx 1.39$};
+\end{axis}
+\end{tikzpicture}\end{center}
+\end{document}

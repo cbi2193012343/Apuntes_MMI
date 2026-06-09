@@ -1,0 +1,251 @@
+                            Modelos Matemáticos I, Lic. Matemáticas
+                                        Segunda tarea
+                                     Prof. Mario Medina
+                              Departamento Matemáticas, UAM-I
+Problemas de solución de ecuaciones diferenciales
+  1. Considere el sistema de ecuaciones diferenciales obtenido en clase para una reacción
+     química de dos elementos químicos con condiciones iniciales
+                        dA             dB
+                           = −kA,         = kA,       A(0) = A0 , B(0) = 0.
+                        dt             dt
+     Obtenga las funciones las cantidades de elementos químicos existentes para toda t.
+     Muestra que la suma de cantidades de los dos elementos A y B es constate.
+
+  2. Una reacción química que genera B a partir de A está modelada a través del problema
+     con valores iniciales
+                      dA               dB
+                         = −2kA2 ,        = 2kA2 ,      A(0) = A0 , B(0) = 0.
+                      dt               dt
+     Encuentre las cantidades de cada uno de los elementos A y B para todo tiempo t.
+     Muestre que A + 2B = constante
+
+
+Problemas de estabilidad de puntos de equilibrio
+  1. Considere el modelo logístico
+                                       dN           N
+                                                          
+                                           = rN 1 −
+                                        dt          K
+       a) Determine los puntos de equilibrio
+       b) Realice el análisis geométricopara determinar
+                                                        su estabilidad, recuerde debe consi-
+                                             N
+          derar la función f (N ) = rN 1 − K
+       c) Use el teorema de linealización para determinar, de ser posible, sobre la estabilidad
+          de los puntos de equilibrio.
+       d) ??Concuerdan los resultados de estabilidad obtenidos mediante el análisis geomé-
+          trico y los obtenidos mediante el teorema de linealización?
+       e) Obtenga la solución analítica N (t) tal que N (0) = N0
+
+
+Problemas de Adimensionalización
+En los siguientes problemas se pide:
+  Identificar las variables y parámetros con dimensiones.
+
+  Introducir variables adimensionales apropiadas.
+
+  Obtener el sistema o ecuación en forma adimensional.
+
+  Identificar los parámetros adimensionales relevantes.
+
+1. Modelo logístico
+  Considere la ecuación diferencial
+
+                                      dP          P
+                                                            
+                                         = rP 1 −   ,
+                                      dt          K
+  donde P (t) representa una población, r > 0 es la tasa de crecimiento y K > 0 la
+  capacidad de carga.
+  Adimensionalice la ecuación.
+  De una interpretación biológica de todos los elementos, variables y parámetros que
+  aparecen en la ecuación diferencial y realice su propios análisis dimensional de ambas
+  ecuaciones, la original y la adimensionalizada.
+
+
+2. Análisis dimensional logístico con cosecha En clase realizamos la adimensionali-
+   zación de la ecuación logística con cosecha
+                                  dN           N
+                                                        
+                                      = rN 1 −               − H.
+                                   dt          K
+  Con los cambios de variables usados en clase se adimensionalizó esta y se obtuvo
+                                   dN
+                                      = M (1 − M ) − λ.
+                                   dτ
+  Realice el análisis dimensional de la ecuación original y también de la obtenida ??la nueva
+  ecuación está realmente adimensionalizada? Justifique completamente sus respuestas.
+
+3. Ecuación logística con efecto Allee En clase estudiamos la ecuación logística con
+   efecto Allee
+                              dN              N        N
+                                                       
+                                   = rN 1 −         1−      .
+                               dt             K         A
+   Se procedió a adimensionalizar esta ecuación y obtuvimos la ecuaión
+                                 dM               M
+                                                                
+                                     = M (1 − M )   −1 .
+                                  dτ              λ
+  Proceda rehacer de manera clara todo el proceso de adimensionalización realizado
+  en clase con lo cambios de variables espacial y temporal. Posteriormente realice el
+  análisis dimensional de la ecuación original y muestre si efectivamente no obtuvimos una
+  ecuación adimensional. Muestre todos sus cálculos y razonamientos de manera clara.
+4. Caída libre con resistencia lineal
+  Una partícula de masa m cae verticalmente bajo gravedad y resistencia proporcional a
+  la velocidad:
+
+                                           dv
+                                       m      = mg − kv,
+                                           dt
+  donde g es la aceleración gravitacional y k > 0 la constante de fricción.
+  Adimensionalice la ecuación e identifique la velocidad característica del sistema.
+
+
+5. Oscilador armónico amortiguado
+  Considere
+
+                                       d2 x    dx
+                                  m       2
+                                            + c + kx = 0,
+                                       dt      dt
+  donde m, c y k son constantes positivas.
+  Introduzca escalas adecuadas de tiempo y longitud para obtener una ecuación adimen-
+  sional.
+
+
+6. Ecuación de difusión
+  La concentración u(x, t) satisface
+
+                                           ∂u    ∂ 2u
+                                              = D 2,
+                                           ∂t    ∂x
+  (x, t) ∈ [0, L] × [0, ∞)
+  donde D > 0 es el coeficiente de difusión.
+  Adimensionalice la ecuación usando una longitud característica L y los siguientes cambios
+  espacial y temporal
+                                         x          Dt
+                                    ξ= ,       θ = 2.
+                                        L           L
+  Siguiendo las ideas trabajadas en clase, ¿cómo justificaría la elección de dichos cambios
+  de variable espacial y temporal?
+
+
+7. Ecuación de calor con pérdida
+  Considere
+
+                                 ∂T    ∂ 2T
+                                    = κ 2 − α(T − Ta ),
+                                 ∂t    ∂x
+  donde Ta es la temperatura ambiente.
+   Adimensionalice la ecuación e interprete el parámetro adimensional obtenido.
+
+
+8. Modelo presa-depredador
+   El sistema Lotka–Volterra está dado por
+
+                                      dx
+                                         = ax − bxy,
+                                      dt
+                                      dy
+                                         = −cy + dxy,
+                                      dt
+   donde a, b, c, d > 0.
+   Adimensionalice el sistema y reduzca el número de parámetros. Sugerencia: considere
+   cambios de variables espaciales y temporal de la forma
+                               x = u xc ,   y = v yc ,   t = τ tc ,
+   y determine quiénes deben ser las constantes xc , yc y tc adecuados, en términos de los
+   parámetros originales del sistema para que sea posible adimensionalizar el sistema de
+   ecuaciones diferenciales original.
+
+
+9. Ecuación de reacción-difusión
+   Considere
+
+                                ∂u    ∂ 2u        u
+                                                             
+                                   = D 2 + ru 1 −   .
+                                ∂t    ∂x          K
+   Adimensionalice la ecuación usando escalas naturales de tiempo, espacio y población.
+
+
+10. Péndulo simple
+   El movimiento angular de un péndulo satisface
+
+                                     d2 θ   g
+                                          +   sin θ = 0.
+                                      dt2   L
+   Adimensionalice la ecuación utilizando una escala temporal adecuada.
+
+
+11. Circuito RC
+   La carga q(t) en un circuito RC satisface
+
+                                        dq    1
+                                      R    + q = V0 ,
+                                        dt C
+   donde R es la resistencia, C la capacitancia y V0 el voltaje constante.
+   Obtenga una forma adimensional de la ecuación.
+Ejercicios de bifurcación en sistemas unidimensiona-
+les
+A continuación se presentan 10 ecuaciones diferenciales autónomas de la forma
+
+                                     dy
+                                        = f (y, µ),
+                                     dx
+donde µ es un parámetro de control. Cada ejercicio está diseñado para analizar los puntos
+de equilibrio, su estabilidad y el diagrama de bifurcación correspondiente. Resuelva al
+menos 5 de los siguientes ejercicios. La tabla que se muestra proporciona información
+sobre los tipos de bifurcaciones que obtendrá.
+
+    dy
+ a)    = µy − y 3 (Pitchfork supercrítica)
+    dx
+    dy
+ b)    = µ + y − y 3 (Saddle-node)
+    dx
+    dy
+ c)    = µy − y 2 (Transcrítica)
+    dx
+    dy
+ d)    = y(µ − y 2 ) (Pitchfork supercrítica)
+    dx
+    dy
+ e)    = µ − e−y (Saddle-node)
+    dx
+    dy
+ f)    = y 2 + µ (Saddle-node)
+    dx
+    dy
+ g)    = µy + y 3 (Pitchfork subcrítica)
+    dx
+    dy
+ h)    = y(µ − y) (Transcrítica)
+    dx
+    dy
+ i)    = µ sin(y) (Bifurcación periódica)
+    dx
+    dy
+ j)    = y 3 − 3µy + µ (Cúspide, codimensión 2)
+    dx
+ Nž       Ecuación              Bifurcación          Observaciones
+  1      ẏ = µy − y 3      Pitchfork supercrítica   Simétrica, típica en sistemas con y ↔ −y.
+  2     ẏ = µ + y − y 3        Saddle-node          Dos puntos fijos se crean o destruyen al
+                                                     variar µ.
+  3      ẏ = µy − y 2          Transcrítica         Intercambio de estabilidad entre dos pun-
+                                                     tos fijos.
+  4     ẏ = y(µ − y 2 )    Pitchfork supercrítica   Nodo estable se divide en dos estables y
+                                                     uno inestable.
+  5      ẏ = µ − e−y           Saddle-node          No lineal, útil para bifurcaciones suaves.
+  6       ẏ = y 2 + µ          Saddle-node          Ejemplo clásico de colisión de puntos fi-
+                                                     jos.
+  7      ẏ = µy + y 3      Pitchfork subcrítica     Inestabilidad creciente con µ > 0.
+  8      ẏ = y(µ − y)          Transcrítica         Modelo poblacional con parámetro am-
+                                                     biental.
+  9      ẏ = µ sin(y)      Bifurcación periódica    Múltiples puntos fijos periódicos según
+                                                     µ.
+ 10    ẏ = y 3 − 3µy + µ    Cúspide (codim. 2)      Ejemplo clásico de bifurcación de alta
+                                                     codimensión.
+
+Cuadro 1: Ejercicios de bifurcación en sistemas unidimensionales dependientes de un parámetro.
+

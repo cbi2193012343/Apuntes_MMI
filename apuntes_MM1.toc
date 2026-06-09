@@ -1,0 +1,58 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Modelos elementales y origen de las EDOs}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Caída libre}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Decaimiento radiactivo}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Separación de variables y solución analítica}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Solución del decaimiento radiactivo}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Vida media}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Ecuaciones lineales de primer orden}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Modelo compartimental con entrada constante}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Circuito RC}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Cinética química}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Reacción elemental $A\to B$ (primer orden)}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Ley de acción de masas}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Modelos poblacionales}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Modelo malthusiano (Nagle §3.2)}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Modelo con entrada y salida}{10}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Ecuaciones diferenciales autónomas}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Puntos de equilibrio}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Línea de fase y análisis geométrico}{10}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Estabilidad y linealización}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Definiciones formales}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Criterio de linealización}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Linealización en sistemas planos}{12}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Modelo logístico}{13}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Puntos de equilibrio}{13}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Análisis geométrico}{13}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Linealización}{14}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Solución analítica}{14}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Modelo logístico con cosecha}{15}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Modelo logístico con efecto Allee}{15}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Bifurcaciones en sistemas unidimensionales}{16}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Bifurcación silla-nodo}{16}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Bifurcación transcrítica}{17}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Bifurcación pitchfork supercrítica}{17}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Bifurcación pitchfork subcrítica}{17}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Resumen de tipos}{18}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Bifurcación periódica: flujos en el círculo}{18}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Bifurcación de cúspide (codimensión 2)}{19}{subsection.9.7}%
+\contentsline {section}{\numberline {10}Ejemplo de ecuación cuadrática: $y'=y^2+\alpha $}{20}{section.10}%
+\contentsline {section}{\numberline {11}Dinámica de dos poblaciones: Lotka--Volterra}{20}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Equilibrios}{20}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Adimensionalización}{20}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Adimensionalización}{21}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Análisis dimensional del modelo logístico}{22}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Adimensionalización del logístico con cosecha}{22}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Adimensionalización del efecto Allee}{22}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Caída libre con resistencia lineal (Nagle §3.4)}{23}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Oscilador armónico amortiguado (Nagle §4.1, §4.9)}{23}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}Péndulo simple (Nagle §4.8)}{24}{subsection.12.6}%
+\contentsline {section}{\numberline {13}Normalización del modelo logístico: resumen}{24}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Análisis dimensional comparado}{25}{subsection.13.1}%
+\contentsline {section}{\numberline {14}Dinámica de dos poblaciones: modelo general}{25}{section.14}%
+\contentsline {section}{\numberline {15}Problemas de la tarea (referencia)}{25}{section.15}%
+\contentsline {subsection}{\numberline {15.1}EDOs: cinética química}{25}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Estabilidad: modelo logístico}{26}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Adimensionalización}{26}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}Bifurcaciones (al menos 5 de 10)}{26}{subsection.15.4}%
+\contentsline {section}{\numberline {16}Notas de legibilidad del material original}{26}{section.16}%

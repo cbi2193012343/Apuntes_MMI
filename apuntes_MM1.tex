@@ -23,6 +23,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+% Verificacion de edicion: cambio minimo realizado por Codex.
 
 % ── Colores ────────────────────────────────────────────────────────────────
 \definecolor{azul}{RGB}{37,99,235}
@@ -1158,6 +1159,116 @@ canónicos que corresponden directamente a los ejercicios (a), (b), (c), (d),
 (f), (g), (h) de la tarea.
 
 % ============================================================
+\newpage
+
+\textbf{Flujo y conjugacion}
+
+\[
+y' = ay, \qquad y(t)=e^{at}y_0, \qquad y_0=y(0)
+\]
+
+\[
+\text{Ansatz} \leftrightarrow y(t)=e^{\lambda t}v \text{ en el s.e. } x'=Ax
+\]
+
+\[
+\lambda,\ v \text{ son valores propios y vectores propios de } A
+\]
+
+\[
+\lambda_1>0,\qquad \lambda_2<0
+\]
+
+\[
+y_1(t)=e^{\lambda_1 t}v_1,\qquad y_2(t)=e^{\lambda_2 t}v_2
+\]
+
+\[
+y(t)=c_1e^{\lambda_1 t}v_1+c_2e^{\lambda_2 t}v_2
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\linewidth]{fig_14_flujo_silla.png}
+\caption{Retrato de fase tipo silla con separatrices y trayectorias esquematicas.}
+\end{figure}
+
+\[
+\text{Sea } x'=f(x), \text{ en } \mathbb{R}^n \text{ de clase } C^1
+\]
+
+\[
+\text{se tiene el llamado flujo asociado } \varphi(t)
+\]
+
+\[
+\varphi:\mathbb{R}\times\mathbb{R}^n\to\mathbb{R}^n,\qquad (t,x)\mapsto \varphi(t,x)=\varphi_t(x)
+\]
+
+\[
+\text{El cual satisface las propiedades}
+\]
+
+\[
+\varphi(0,x)=\varphi_0(x)=x
+\]
+
+\[
+\varphi(s,\varphi(t,x))=\varphi_{s+t}(x)
+\]
+
+\[
+\frac{d}{dt}\varphi_t(x)=F(\varphi_t(x))
+\]
+
+\[
+\varphi_t(x)=x(t)=xe^{at}, \qquad \varphi_0(x)=x(0)=x
+\]
+
+\[
+\varphi_s(\varphi_t(x))=\varphi_s(xe^{at})=xe^{a(s+t)}=\varphi_{s+t}(x)
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth]{fig_15_flujo_orbita.png}
+\caption{Trayectoria de una solucion bajo el flujo \(\varphi_t\).}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth]{fig_16_flujo_composicion.png}
+\caption{Ilustracion de la propiedad de composicion \(\varphi_s(\varphi_t(x))=\varphi_{s+t}(x)\).}
+\end{figure}
+
+\[
+\text{Sean } x'=F(x), \qquad y'=G(y) \text{ de clase } C^1
+\]
+
+\[
+x_0,\ y_0 \text{ puntos de equilibrio de (a) y (b) respectivamente}
+\]
+
+\[
+\varphi_t(x),\ \psi_t(y) \text{ son sus flujos correspondientes}
+\]
+
+\[
+\text{Decimos que (a) y (b) son localmente topologicamente conjugados alrededor de }x_0\text{ y }y_0\text{ si}
+\]
+
+\[
+\exists\ \text{vecindades }U_{x_0}, V_{y_0}
+\]
+
+\[
+\exists\ H:U_{x_0}\to V_{y_0}\ \text{un homeomorfismo}
+\]
+
+\[
+H(\varphi_t(x))=\psi_t(H(x))
+\]
+
 \section{Notas de legibilidad del material original}
 % ============================================================
 

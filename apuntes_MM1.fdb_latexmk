@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1780596064.63049 "c:/Users/shint/Music/Proyectos/Apuntes_de_Modelos_Matemáticos_I/apuntes_MM1.tex" "apuntes_MM1.pdf" "apuntes_MM1" 1780596067.87275 0
+["pdflatex"] 1782074553.82015 "c:/Users/shint/Music/Proyectos/Apuntes_de_Modelos_Matemáticos_I/apuntes_MM1.tex" "apuntes_MM1.pdf" "apuntes_MM1" 1782074558.01578 0
   "C:/Program Files/MiKTeX/tex/generic/bigintcalc/bigintcalc.sty" 1576433602 40635 c40361e206be584d448876bba8a64a3b ""
   "C:/Program Files/MiKTeX/tex/generic/bitset/bitset.sty" 1575926576 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
   "C:/Program Files/MiKTeX/tex/generic/gettitlestring/gettitlestring.sty" 1576433666 8371 9d55b8bd010bc717624922fb3477d92e ""
@@ -254,11 +254,11 @@
   "C:/Users/shint/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/shint/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/shint/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "apuntes_MM1.aux" 1780596067 11607 3fc1433ff0545484bc005688f824098a "pdflatex"
-  "apuntes_MM1.out" 1780596067 12282 724a5aa169602e02f77387a78d6d0496 "pdflatex"
-  "apuntes_MM1.tex" 1780596057 41833 2193142c321092bc9e76964262f0f839 ""
-  "apuntes_MM1.toc" 1780596067 5460 9c5f7f8bea209f341614179f63d4ff82 "pdflatex"
-  "c:/Users/shint/Music/Proyectos/Apuntes_de_Modelos_Matemáticos_I/apuntes_MM1.tex" 1780596057 41833 2193142c321092bc9e76964262f0f839 ""
+  "apuntes_MM1.aux" 1782074557 12169 10f8f171ab3798a4bf4b6ad637d6ebd9 "pdflatex"
+  "apuntes_MM1.out" 1782074557 12282 724a5aa169602e02f77387a78d6d0496 "pdflatex"
+  "apuntes_MM1.tex" 1782068219 43919 828f6dea986c0781f5d1053a9b5b5bb6 ""
+  "apuntes_MM1.toc" 1782074557 5460 76d3da62fc97c68b95b60dfd650f9996 "pdflatex"
+  "c:/Users/shint/Music/Proyectos/Apuntes_de_Modelos_Matemáticos_I/apuntes_MM1.tex" 1782068219 43919 828f6dea986c0781f5d1053a9b5b5bb6 ""
   "fig_01_decaimiento_solucion.png" 1780552361 60588 790b851643a6ba33ba4fe6a30d5178f2 ""
   "fig_02_vida_media.png" 1780552361 32662 ae32028bf9018c53da22c95986403854 ""
   "fig_05_campo_compartimental.png" 1780552361 126735 064e80faae200b4fbca4d95ec77444cc ""
@@ -270,6 +270,9 @@
   "fig_11_autonoma_bifurcacion.png" 1780552360 155988 0dd0c647b61a85b5b2fbc1e73e33dd8a ""
   "fig_12_estabilidad_lyapunov.png" 1780552360 42997 0b23828b36a6ed391c4bf4afb5d1e244 ""
   "fig_13_normalizacion_logistica.png" 1780552360 63978 c8c19abe6e2acb5f09ceda74f30fd840 ""
+  "fig_14_flujo_silla.png" 1782074552 368980 ad368a74ddb6529715bf302045fafb80 ""
+  "fig_15_flujo_orbita.png" 1782074552 28518 253081dcaf5511641569a04e61d4fba5 ""
+  "fig_16_flujo_composicion.png" 1782074553 54657 58b819c7a0e22e8df951eb1d3dd18184 ""
   (generated)
   "apuntes_MM1.aux"
   "apuntes_MM1.log"

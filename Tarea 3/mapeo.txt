@@ -1,0 +1,192 @@
+## Checklist: contenido del .tex vs. respaldo en apuntes/Nagle
+
+---
+
+### ✅ = presente en apuntes/Nagle
+### ⚠️ = se reconstruye por derivación propia a partir del enunciado
+
+---
+
+### EJERCICIO 1 — Mutualismo fuerte ($x'=2x-x^2+2xy$)
+
+| Elemento usado en el .tex | Estado |
+|---|---|
+| Factorización $x'=x(2-x+2y)$ | ✅ Técnica general |
+| Interpretación por signo de $\partial_y(x'/x)$ | ✅ Concepto general de campo |
+| Jacobiana general y evaluación | ✅ Teoría general |
+| Clasificación: nodo fuente, silla | ✅ Tipos locales |
+| Isoclinas nulas y tabla de signos | ✅ Método general |
+| Análisis $(xy)'=xy(4+x+y)$, $u'\geq u^2$ | ⚠️ Se reconstruye por derivación propia |
+| Dinámica sobre los ejes (logística 1D) | ✅ Implícito en nullclines |
+
+---
+
+### EJERCICIO 2 — Mutualismo regulado ($x'=2x-2x^2+xy$)
+
+| Elemento | Estado |
+|---|---|
+| Método general (Jacobiana, eigenvalores, isoclinas) | ✅ Teoría general |
+| Tabla comparativa Ej.1 vs Ej.2 | ⚠️ Se reconstruye por derivación propia |
+| Nodo sumidero estable $(2,2)$ | ✅ Tipo clasificado por cálculo propio |
+
+---
+
+### EJERCICIO 3 — Competencia ($x'=2x-x^2-2xy$)
+
+| Elemento | Estado |
+|---|---|
+| Método general | ✅ Teoría general |
+| Separatriz $y=x$ (eigenvector de silla) | ✅ Concepto general de variedades |
+| Principio de Exclusión Competitiva (nombre) | ⚠️ Se formula por derivación propia |
+| Modelo de competencia (forma general) | ✅ Referencia teórica general |
+
+---
+
+### PROBLEMA 1 — Sistema lineal ($x'=x+y-4$)
+
+| Elemento | Estado |
+|---|---|
+| Isoclinas como rectas, intersección = equilibrio | ✅ Método general |
+| Jacobiana constante (sistema lineal) | ✅ Teoría general |
+| Clasificación silla por eigenvalores | ✅ Teoría general |
+
+---
+
+### PROBLEMA 2 — $x'=x(1-y),\ y'=y(x-2)$
+
+| Elemento | Estado |
+|---|---|
+| Forma tipo depredador-presa | ✅ Lotka-Volterra como referencia teórica |
+| Centro no hiperbólico, H-G no aplica | ✅ No-ejemplo / teoría general |
+| Isoclinas $y=1$, $x=2$ y tabla de signos | ✅ Método general |
+
+---
+
+### PROBLEMA 3 — $x'=-y+x^2,\ y'=x+y^2$
+
+| Elemento | Estado |
+|---|---|
+| Isoclinas como curvas (parábolas) | ✅ Generalidad de isoclinas |
+| Centro no hiperbólico en $(0,0)$ | ✅ Concepto general |
+| Silla en $(-1,1)$ | ✅ Tipo silla / cálculo propio |
+| Sistema específico | ⚠️ Se reconstruye por derivación propia |
+
+---
+
+### PROBLEMA 4 — $x'=x(1-x-y),\ y'=y(2-x)$
+
+| Elemento | Estado |
+|---|---|
+| Sistema casi idéntico $x'=x(1-x-y),\ y'=y(1-x)$ | ✅ Sí, por teoría general |
+| Nuestro sistema tiene $y'=y(2-x)$ (diferente) | ⚠️ Variante ajustada por derivación propia |
+| Técnica de isoclinas y signos | ✅ Método general |
+
+---
+
+### PROBLEMA 5 — $x'=-y+x(x^2+y^2),\ y'=x+y(x^2+y^2)$
+
+| Elemento | Estado |
+|---|---|
+| Sistema idéntico | ✅ Sí, no-ejemplo |
+| Análisis en polares $r'=r^3$, $\dot\theta=1$ | ✅ Sí, explícito en la teoría |
+| Jacobiana $\lambda=\pm i$, no hiperbólico | ✅ Sí |
+| Foco inestable real vs. centro de linealización | ✅ Sí |
+
+---
+
+### PROBLEMA 6 — Lotka-Volterra
+
+| Elemento | Estado |
+|---|---|
+| Sistema idéntico $P'=P(\alpha-\beta D)$, $D'=D(\delta P-\gamma)$ | ✅ Sí |
+| Isoclinas $D=\alpha/\beta$, $P=\gamma/\delta$ | ✅ Sí |
+| Análisis de signos por región | ✅ Sí |
+| Jacobiana en $E^*$, $\lambda=\pm i\sqrt{\alpha\gamma}$ | ✅ Sí |
+| Integral primera $H(P,D)$ | ✅ Sí |
+| Silla en $(0,0)$ | ✅ Sí |
+
+---
+
+### EJERCICIO 4 — Dulac ($a$ y $b$)
+
+| Elemento | Estado |
+|---|---|
+| Criterio de Bendixson-Dulac | ⚠️ Se desarrolla por derivación propia |
+| Función $B=e^{-2\beta x}$ | ⚠️ Se obtiene por cálculo propio |
+| Función $B=1+x^2$ | ⚠️ Se obtiene por cálculo propio |
+
+---
+
+### HARTMAN–GROBMAN: Problema 1 (silla clásica)
+
+| Elemento | Estado |
+|---|---|
+| Enunciado del teorema H-G | ✅ Sí |
+| Hiperbolicidad, definición | ✅ Sí |
+| Cálculo de eigenvectores y variedades | ✅ Sí |
+| Sistema específico $x'=x+y^2$ | ⚠️ Se reconstruye por derivación propia |
+
+---
+
+### HARTMAN–GROBMAN: Problema 2 (foco estable)
+
+| Elemento | Estado |
+|---|---|
+| Foco como tipo de equilibrio | ✅ Sí |
+| Sistema específico $x'=-x-2y+xy$ | ⚠️ Se reconstruye por derivación propia |
+| Eigenvalores complejos, estabilidad | ✅ Sí |
+
+---
+
+### HARTMAN–GROBMAN: Problema 3 (múltiples equilibrios)
+
+| Elemento | Estado |
+|---|---|
+| Sistema $x'=y$, $y'=x-x^3$ | ⚠️ Se reconstruye por derivación propia |
+| Tres equilibrios, clasificación diferenciada | ⚠️ Se obtiene por derivación propia |
+| No hiperbólico → H-G no aplica | ✅ Sí |
+| Sistema Hamiltoniano como excepción | ⚠️ Se añade como observación propia |
+
+---
+
+### HARTMAN–GROBMAN: Problema 7 (silla-foco 3D)
+
+| Elemento | Estado |
+|---|---|
+| Sistema en $\mathbb{R}^3$ | ⚠️ Se reconstruye por derivación propia |
+| Bloques desacoplados en Jacobiana 3D | ⚠️ Se deduce por linealización propia |
+| Variedades estable/inestable en 3D | ⚠️ Se deduce por linealización propia |
+| Sistema de 3 variables invariante | ✅ Sí, octante invariante |
+
+---
+
+### HARTMAN–GROBMAN: Problema 8 (Lorenz)
+
+| Elemento | Estado |
+|---|---|
+| Sistema de Lorenz | ⚠️ Se reconstruye por derivación propia |
+| Bloque desacoplado en Jacobiana 3D | ⚠️ Se deduce por linealización propia |
+| Atractor caótico de mariposa | ⚠️ Se reconstruye por derivación propia |
+
+---
+
+## Resumen ejecutivo
+
+| Categoría | Respaldo directo | Respaldo parcial | Derivación propia |
+|---|---|---|---|
+| Ej. 1 (mutualismo fuerte) | Método general | Análisis $u'\geq u^2$ | — |
+| Ej. 2 (mutualismo regulado) | Método general | — | Tabla comparativa |
+| Ej. 3 (competencia) | Método general | Separatriz | Nombre "Exclusión Competitiva" |
+| Prob. 1 (lineal) | Método completo | — | — |
+| Prob. 2 (presa) | Análogo Lotka-Volterra | — | — |
+| Prob. 3 (parábolas) | Parcial | — | Sistema específico |
+| Prob. 4 (biológico) | Casi idéntico | $y'=y(2-x)$ vs $y(1-x)$ | — |
+| **Prob. 5 (no-ejemplo)** | Idéntico | — | — |
+| **Prob. 6 (Lotka-Volterra)** | Idéntico | — | — |
+| Ej. 4 (Dulac) | Criterio general | — | Construcción por derivación propia |
+| H-G Prob. 1, 2, 3 | Método H-G | — | Sistemas específicos |
+| H-G Prob. 7, 8 (3D) | Solo octante invariante | — | Sistemas específicos |
+
+---
+
+Todo lo que no está respaldado de forma literal por apuntes o Nagle queda escrito como derivación propia a partir del enunciado y de la teoría general usada en la tarea.

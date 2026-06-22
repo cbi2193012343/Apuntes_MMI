@@ -1,0 +1,75 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Modelos elementales y origen de las EDOs}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Caída libre}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Decaimiento radiactivo}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Separación de variables y solución analítica}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Solución del decaimiento radiactivo}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Vida media}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Ecuaciones lineales de primer orden}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Modelo compartimental con entrada constante}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Circuito RC}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Cinética química}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Reacción elemental $A\to B$ (primer orden)}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Ley de acción de masas}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Modelos poblacionales}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Modelo malthusiano \emph {(véase Nagle, §3.2)}}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Modelo con entrada y salida}{10}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Ecuaciones diferenciales autónomas}{10}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Puntos de equilibrio}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Línea de fase y análisis geométrico}{11}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Estabilidad y linealización}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Definiciones formales}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Criterio de linealización (caso escalar)}{13}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Expansión de Taylor en una y dos dimensiones}{13}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Linealización en sistemas planos}{14}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Modelo logístico}{15}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Puntos de equilibrio}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Análisis geométrico}{15}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Linealización}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Solución analítica}{16}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Modelo logístico con cosecha}{17}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Modelo logístico con efecto Allee}{17}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Bifurcaciones en sistemas unidimensionales}{18}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Bifurcación silla-nodo}{18}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Bifurcación transcrítica}{19}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Bifurcación pitchfork supercrítica}{19}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Bifurcación pitchfork subcrítica}{19}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Resumen de tipos}{20}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Bifurcación periódica: flujos en el círculo}{20}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Bifurcación de cúspide (codimensión 2)}{20}{subsection.9.7}%
+\contentsline {section}{\numberline {10}Ejemplo: $y'=y^2+\alpha $}{21}{section.10}%
+\contentsline {section}{\numberline {11}Adimensionalización}{21}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Análisis dimensional del modelo logístico}{22}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Adimensionalización del logístico con cosecha}{22}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Adimensionalización del efecto Allee}{22}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Caída libre con resistencia lineal \emph {(véase Nagle, §3.4)}}{22}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Oscilador armónico amortiguado \emph {(véase Nagle, §4.1, §4.9)}}{22}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Péndulo simple \emph {(véase Nagle, §4.8)}}{23}{subsection.11.6}%
+\contentsline {section}{\numberline {12}Normalización del modelo logístico: resumen}{23}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Análisis dimensional comparado}{23}{subsection.12.1}%
+\contentsline {section}{\numberline {13}Sistemas lineales: $\vec {X}'=A\vec {X}$}{24}{section.13}%
+\contentsline {subsection}{\numberline {13.1}El ansatz exponencial y los valores propios}{24}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Solución general}{24}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Dinámica local en el plano: tipos de equilibrios}{24}{section.14}%
+\contentsline {section}{\numberline {15}Teorema de Hartman-Grobman}{25}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Ejemplo trabajado: verificación de Hartman-Grobman}{27}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Limitación de Hartman-Grobman: el no-ejemplo}{29}{subsection.15.2}%
+\contentsline {section}{\numberline {16}Flujo de un sistema dinámico y conjugación topológica}{31}{section.16}%
+\contentsline {subsection}{\numberline {16.1}El flujo asociado a un sistema}{31}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}Conjugación topológica}{33}{subsection.16.2}%
+\contentsline {section}{\numberline {17}Isoclinas nulas y análisis cualitativo en el plano}{33}{section.17}%
+\contentsline {section}{\numberline {18}Dinámica de dos poblaciones: modelo depredador-presa}{37}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Adimensionalización del sistema de Lotka--Volterra}{38}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Análisis de isoclinas y signos}{38}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}Puntos de equilibrio y estabilidad local}{40}{subsection.18.3}%
+\contentsline {subsection}{\numberline {18.4}Integrales primeras y órbitas cerradas}{42}{subsection.18.4}%
+\contentsline {subsection}{\numberline {18.5}Cosecha en el modelo logístico: perspectiva de integrales}{45}{subsection.18.5}%
+\contentsline {section}{\numberline {19}Sistemas de tres variables y planos invariantes}{45}{section.19}%
+\contentsline {section}{\numberline {20}Modelos de dos especies en competencia}{46}{section.20}%
+\contentsline {section}{\numberline {21}Dinámica de dos poblaciones: modelo general}{47}{section.21}%
+\contentsline {section}{\numberline {22}Problemas de la tarea (referencia)}{47}{section.22}%
+\contentsline {subsection}{\numberline {22.1}EDOs: cinética química}{47}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Estabilidad: modelo logístico}{47}{subsection.22.2}%
+\contentsline {subsection}{\numberline {22.3}Adimensionalización}{47}{subsection.22.3}%
+\contentsline {subsection}{\numberline {22.4}Bifurcaciones (al menos 5 de 10)}{48}{subsection.22.4}%
+\contentsline {subsection}{\numberline {22.5}Sistemas lineales y Hartman-Grobman}{48}{subsection.22.5}%

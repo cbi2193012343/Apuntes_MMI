@@ -1,0 +1,288 @@
+\documentclass[11pt,letterpaper]{article}
+
+% =========================================================
+% Documento base de exposicion
+% Tema: funciones iteradas, diagrama de bifurcacion logistico y map tent
+% Enfoque: curso de Modelos Matematicos I
+% =========================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\geometry{margin=2.4cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=0pt}
+
+\newcommand{\Fmu}{F_\mu}
+\newcommand{\Tdos}{T_2}
+\newcommand{\orb}{\mathcal O^+}
+
+\title{Documento base para exposici\'on\\Funciones iteradas, bifurcaci\'on log\'istica y map tent}
+\author{Alejandro Cruz L\'opez}
+\date{Modelos Matem\'aticos I}
+
+\begin{document}
+\maketitle
+
+\section*{Prop\'osito del documento}
+Este documento organiza el contenido base para una exposici\'on de aproximadamente veinte minutos. El objetivo no es presentar el tema como un cap\'itulo aislado de sistemas din\'amicos, sino explicarlo desde las herramientas usadas en el curso de Modelos Matem\'aticos I: modelaci\'on, variables de estado, equilibrio, estabilidad, linealizaci\'on, adimensionalizaci\'on y bifurcaciones. El texto de Devaney se usa como referencia para el enfoque de funciones iteradas, mapa log\'istico discreto, diagramas de bifurcaci\'on y map tent; los apuntes del curso se usan para fijar el lenguaje de modelos continuos, equilibrios, estabilidad y bifurcaciones.
+
+\section*{Idea conductora de la exposici\'on}
+La narrativa central debe ser:
+\[
+\text{modelo continuo}\longrightarrow \text{modelo discreto}\longrightarrow \text{iteraci\'on}\longrightarrow \text{\'orbitas}\longrightarrow \text{estabilidad}\longrightarrow \text{bifurcaci\'on}\longrightarrow \text{caos}.
+\]
+En el curso se estudiaron ecuaciones aut\'onomas de la forma
+\[
+\frac{dy}{dt}=f(y),
+\]
+donde el signo de $f(y)$, los equilibrios y la linealizaci\'on organizan el comportamiento cualitativo. En esta exposici\'on se transfiere esa misma manera de pensar al caso discreto:
+\[
+x_{n+1}=f(x_n).
+\]
+
+\section*{Esquema general de veinte diapositivas}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.08\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.48\textwidth}}
+\toprule
+\textbf{No.} & \textbf{Tema} & \textbf{Funci\'on dentro de la exposici\'on}\\
+\midrule
+1 & T\'itulo y objetivo & Presentar el tema y anunciar que se abordar\'a desde modelos matem\'aticos.\\
+2 & Puente con el curso & Pasar de EDOs aut\'onomas a mapas discretos.\\
+3 & Funci\'on como regla de evoluci\'on & Interpretar una funci\'on como mecanismo de cambio temporal.\\
+4 & Iteraci\'on & Definir $f^n$ y la sucesi\'on generada por el modelo.\\
+5 & \textit{\'Orbitas} & Introducir el objeto que reemplaza a la curva soluci\'on continua.\\
+6 & Equilibrio continuo vs punto fijo discreto & Conectar $f(y^*)=0$ con $f(p)=p$.\\
+7 & Puntos fijos & Mostrar c\'omo se calculan y se interpretan.\\
+8 & Estabilidad & Comparar el criterio continuo con el discreto.\\
+9 & Linealizaci\'on & Explicar por qu\'e la derivada decide atracci\'on o repulsi\'on.\\
+10 & Log\'istico continuo & Recordar el modelo del curso.\\
+11 & Normalizaci\'on & Mostrar c\'omo se eliminan par\'ametros dimensionales.\\
+12 & Log\'istico discreto & Introducir $x_{n+1}=\mu x_n(1-x_n)$.\\
+13 & Puntos fijos log\'isticos & Resolver $\Fmu(x)=x$.\\
+14 & Estabilidad log\'istica & Aplicar $|\Fmu'(p)|<1$.\\
+15 & Bifurcaci\'on & Pasar de estabilidad de equilibrios a estabilidad de ciclos.\\
+16 & Duplicaci\'on de periodo & Explicar la ruta $1\to2\to4\to8\to\cdots$.\\
+17 & Diagrama de bifurcaci\'on & Ense\~nar c\'omo leer el diagrama.\\
+18 & Map tent & Presentar el modelo lineal por partes.\\
+19 & Codificaci\'on simb\'olica & Explicar la partici\'on izquierda/derecha y sucesiones.\\
+20 & Cierre & Sintetizar herramientas del curso y aportaci\'on de Devaney.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\section{Diapositiva 1: T\'itulo y objetivo}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item T\'itulo: \emph{Funciones iteradas, bifurcaci\'on log\'istica y map tent}.
+    \item Subt\'itulo: \emph{Una lectura desde Modelos Matem\'aticos I}.
+    \item Objetivo: explicar c\'omo una regla simple de evoluci\'on puede generar equilibrio, oscilaciones, bifurcaciones y caos.
+\end{itemize}
+\textbf{Descripci\'on oral.} La exposici\'on debe iniciar aclarando que se tomar\'an las herramientas del curso y se aplicar\'an al caso discreto. No se debe comenzar directamente con caos; primero se debe construir la analog\'ia con modelos aut\'onomos.
+
+\section{Diapositiva 2: Puente con el curso}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Modelo continuo: $y'=f(y)$.
+    \item Modelo discreto: $x_{n+1}=f(x_n)$.
+    \item En ambos casos, el estado actual determina la evoluci\'on.
+\end{itemize}
+\textbf{Descripci\'on oral.} En el curso, las ecuaciones aut\'onomas se analizaban por signo, equilibrios y estabilidad. La versi\'on discreta conserva la idea de estado, pero sustituye la curva soluci\'on por una sucesi\'on.
+
+\section{Diapositiva 3: Funci\'on como regla de evoluci\'on}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Una funci\'on $f:I\to I$ actualiza el estado.
+    \item Si $x_n$ es el estado actual, entonces $x_{n+1}=f(x_n)$.
+    \item El inter\'es est\'a en el comportamiento a largo plazo.
+\end{itemize}
+\textbf{Descripci\'on oral.} Se debe insistir en que una funci\'on deja de ser solo una regla algebraica y se convierte en un modelo din\'amico cuando se aplica repetidamente.
+
+\section{Diapositiva 4: Iteraci\'on}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item $f^2=f\circ f$, $f^3=f\circ f\circ f$.
+    \item En general, $f^n$ es la composici\'on de $f$ consigo misma $n$ veces.
+    \item Trayectoria discreta: $x_0,x_1,x_2,\ldots$.
+\end{itemize}
+\textbf{Descripci\'on oral.} Aqu\'i debe quedar claro que el an\'alisis no se agota en calcular $f(x)$ una vez. La pregunta central es qu\'e ocurre despu\'es de muchas iteraciones.
+
+\section{Diapositiva 5: \textit{\'Orbitas}}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Definici\'on: $\orb(x)=\{x,f(x),f^2(x),\ldots\}$.
+    \item Posibles comportamientos: convergencia, periodicidad, irregularidad.
+    \item Analog\'ia: la \textit{\'orbita} cumple el papel de la soluci\'on temporal.
+\end{itemize}
+\textbf{Descripci\'on oral.} La \textit{\'orbita} permite hablar del destino del sistema. En modelos matem\'aticos, esto equivale a preguntar si el sistema se estabiliza, oscila o se vuelve impredecible.
+
+\section{Diapositiva 6: Equilibrio continuo vs punto fijo discreto}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item En EDO: $y^*$ es equilibrio si $f(y^*)=0$.
+    \item En mapas: $p$ es punto fijo si $f(p)=p$.
+    \item Ambos representan estados invariantes.
+\end{itemize}
+\textbf{Descripci\'on oral.} La comparaci\'on debe hacerse con cuidado: en una EDO el equilibrio anula la velocidad; en un mapa, el punto fijo permanece igual despu\'es de aplicar la funci\'on.
+
+\section{Diapositiva 7: Puntos fijos}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Ecuaci\'on de punto fijo: $f(p)=p$.
+    \item Interpretaci\'on gr\'afica: intersecci\'on de $y=f(x)$ con $y=x$.
+    \item Los puntos fijos son candidatos a estados estacionarios.
+\end{itemize}
+\textbf{Descripci\'on oral.} Conviene enfatizar que esta es la primera pregunta cualitativa: antes de estudiar caos, se debe saber si existen estados estacionarios.
+
+\section{Diapositiva 8: Estabilidad de puntos fijos}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Criterio continuo: $f'(y^*)<0$ estable; $f'(y^*)>0$ inestable.
+    \item Criterio discreto: $|f'(p)|<1$ atractor; $|f'(p)|>1$ repulsor.
+    \item El caso $|f'(p)|=1$ es cr\'itico.
+\end{itemize}
+\textbf{Descripci\'on oral.} Se debe destacar que el valor absoluto aparece porque, en tiempo discreto, una perturbaci\'on puede cambiar de signo en cada iteraci\'on y aun as\'i disminuir en magnitud.
+
+\section{Diapositiva 9: Linealizaci\'on}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Cerca de $p$, $f(x)\approx f(p)+f'(p)(x-p)$.
+    \item Como $f(p)=p$, entonces $x_{n+1}-p\approx f'(p)(x_n-p)$.
+    \item La derivada act\'ua como factor local de amplificaci\'on.
+\end{itemize}
+\textbf{Descripci\'on oral.} Esta diapositiva es el puente t\'ecnico m\'as importante: conecta directamente con la linealizaci\'on estudiada en el curso.
+
+\section{Diapositiva 10: Modelo log\'istico continuo}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Modelo: $\dfrac{dN}{dt}=rN\left(1-\dfrac{N}{K}\right)$.
+    \item Equilibrios: $N=0$ y $N=K$.
+    \item Interpretaci\'on: $K$ es capacidad de carga.
+\end{itemize}
+\textbf{Descripci\'on oral.} Esta diapositiva recupera el modelo del curso para que el mapa log\'istico discreto no aparezca como una f\'ormula aislada.
+
+\section{Diapositiva 11: Normalizaci\'on del log\'istico}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Cambios: $u=N/K$ y $\tau=rt$.
+    \item Forma adimensional: $\dfrac{du}{d\tau}=u(1-u)$.
+    \item La normalizaci\'on concentra la din\'amica esencial.
+\end{itemize}
+\textbf{Descripci\'on oral.} La adimensionalizaci\'on del curso muestra que muchos modelos distintos comparten una misma estructura. Aqu\'i prepara la entrada a la versi\'on discreta.
+
+\section{Diapositiva 12: Log\'istico discreto}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Mapa: $\Fmu(x)=\mu x(1-x)$.
+    \item Iteraci\'on: $x_{n+1}=\Fmu(x_n)$.
+    \item Par\'ametro: $\mu$ controla la din\'amica.
+\end{itemize}
+\textbf{Descripci\'on oral.} El mapa log\'istico no se resuelve como EDO. Se itera, se observan \textit{\'orbitas} y se estudia c\'omo cambia el comportamiento al variar $\mu$.
+
+\section{Diapositiva 13: Puntos fijos del log\'istico discreto}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Resolver $\Fmu(x)=x$.
+    \item $\mu x(1-x)=x$.
+    \item Puntos fijos: $x=0$ y $p_\mu=(\mu-1)/\mu$.
+\end{itemize}
+\textbf{Descripci\'on oral.} Este c\'alculo debe hacerse de forma breve, como se har\'ia con equilibrios en EDOs: primero se encuentran estados estacionarios y despu\'es se estudia su estabilidad.
+
+\section{Diapositiva 14: Estabilidad del log\'istico discreto}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Derivada: $\Fmu'(x)=\mu(1-2x)$.
+    \item En $0$: $\Fmu'(0)=\mu$.
+    \item En $p_\mu$: $\Fmu'(p_\mu)=2-\mu$.
+    \item $p_\mu$ es estable si $1<\mu<3$.
+\end{itemize}
+\textbf{Descripci\'on oral.} Se debe explicar que $\mu=3$ es especial porque $\Fmu'(p_\mu)=-1$, es decir, se pierde la estabilidad por el borde del criterio $|\Fmu'(p_\mu)|<1$.
+
+\section{Diapositiva 15: Bifurcaci\'on}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item En el curso, una bifurcaci\'on cambia n\'umero o estabilidad de equilibrios.
+    \item En mapas, tambi\'en pueden cambiar ciclos peri\'odicos.
+    \item Para $\mu=3$, el punto fijo pierde estabilidad y aparece un ciclo de periodo $2$.
+\end{itemize}
+\textbf{Descripci\'on oral.} La idea es extender el concepto de bifurcaci\'on: ya no solo se bifurcan puntos de equilibrio; tambi\'en aparecen comportamientos peri\'odicos nuevos.
+
+\section{Diapositiva 16: Duplicaci\'on de periodo}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Ruta: $1\to2\to4\to8\to\cdots$.
+    \item Cada duplicaci\'on cambia el atractor observado.
+    \item La cascada conduce a una regi\'on de comportamiento ca\'otico.
+\end{itemize}
+\textbf{Descripci\'on oral.} Se debe presentar como un fen\'omeno cualitativo: al aumentar el par\'ametro, el atractor deja de ser un punto, luego es un ciclo, despu\'es ciclos m\'as largos y finalmente comportamiento irregular.
+
+\section{Diapositiva 17: Diagrama de bifurcaci\'on}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Eje horizontal: $\mu$.
+    \item Eje vertical: valores asint\'oticos de $x_n$.
+    \item Una rama: punto fijo; dos ramas: periodo $2$; muchas ramas: din\'amica compleja.
+\end{itemize}
+\textbf{Descripci\'on oral.} El diagrama debe explicarse como una herramienta de modelos: resume, para muchos valores del par\'ametro, el comportamiento a largo plazo del sistema.
+
+\section{Diapositiva 18: Map tent}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Definici\'on:
+    \[
+    \Tdos(x)=
+    \begin{cases}
+    2x, & 0\leq x\leq 1/2,\\
+    2(1-x), & 1/2\leq x\leq 1.
+    \end{cases}
+    \]
+    \item Es lineal por partes.
+    \item Tiene forma de tienda.
+\end{itemize}
+\textbf{Descripci\'on oral.} Este ejemplo debe introducirse como un modelo simplificado: conserva expansi\'on y plegamiento, pero evita parte de la complejidad algebraica del log\'istico.
+
+\section{Diapositiva 19: Codificaci\'on simb\'olica}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Dividir $[0,1]$ en izquierda y derecha:
+    \[
+    L=[0,1/2],\qquad R=[1/2,1].
+    \]
+    \item Cada \textit{\'orbita} produce una sucesi\'on de s\'imbolos.
+    \item La din\'amica puede estudiarse mediante sucesiones.
+\end{itemize}
+\textbf{Descripci\'on oral.} El punto conceptual es que una \textit{\'orbita} num\'erica se transforma en una palabra infinita. Esto abre la puerta a la din\'amica simb\'olica.
+
+\section{Diapositiva 20: Cierre}
+\textbf{Contenido que debe aparecer.}
+\begin{itemize}
+    \item Herramientas del curso: equilibrio, estabilidad, linealizaci\'on, bifurcaci\'on y adimensionalizaci\'on.
+    \item Aportaci\'on de Devaney: funciones iteradas como fuente de din\'amica ca\'otica.
+    \item Mensaje final: modelos simples pueden producir comportamiento complejo.
+\end{itemize}
+\textbf{Descripci\'on oral.} El cierre debe evitar introducir conceptos nuevos. Solo debe conectar el recorrido completo: del modelo continuo al mapa discreto, del punto fijo al caos.
+
+\section*{Referencias base}
+\begin{thebibliography}{9}
+\bibitem{ApuntesMM1}
+Apuntes de Modelos Matem\'aticos I. Transcripci\'on, notas de clase y complementos con Nagle, Saff \& Snider, 7a ed. Mayo--junio de 2026.
+
+\bibitem{Devaney}
+Devaney, R. L. \emph{An Introduction to Chaotic Dynamical Systems}. Second Edition. Addison-Wesley / Westview Press.
+\end{thebibliography}
+
+\end{document}

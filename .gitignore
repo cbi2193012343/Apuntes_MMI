@@ -1,0 +1,36 @@
+# LaTeX build outputs
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+
+# Generated archives and scratch files
+*.zip
+tmp_*/
+__pycache__/
+*.pyc
+
+# Local tooling and environments
+.venv/
+.mplconfig/
+.agents/
+.codex/
+
+# Workspace folders that are not part of the note sources
+Fotos/
+Fotos nuevas/
+Nueva carpeta/
+Preparación/
+Referencias/
+Tarea 2/
+Tarea 3/
+tarea_series_taylor_v2/
+
+# Figures kept in a dedicated folder
+/fig_*.png

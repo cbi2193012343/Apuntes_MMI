@@ -12,6 +12,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\graphicspath{{figuras/}}
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
@@ -56,21 +57,13 @@
 
 % ──────────────────────────────────────────────────────────────────────────
 \title{\textbf{Apuntes de Modelos Matemáticos I}\\[4pt]
-       \large Transcripción, notas de clase y complementos con Nagle, Saff \& Snider (7a ed.)}
-\author{Transcripción y edición acumulativa}
+       \large Notas de clase y complementos con Nagle, Saff \& Snider (7a ed.)}
+\author{Compilación y edición}
 \date{Mayo--Junio de 2026}
 % ──────────────────────────────────────────────────────────────────────────
 
 \begin{document}
 \maketitle
-
-\begin{tcolorbox}[colback=gray!8, colframe=gray!50, title=Nota sobre este documento]
-Este documento reúne la transcripción acumulativa de las imágenes de pizarrón
-y las notas de clase, complementadas con desarrollos en \LaTeX\ y con material del libro
-\emph{Fundamentals of Differential Equations}, 7a ed., Nagle, Saff \& Snider.
-Las figuras con nombre \texttt{fig\_XX\_*.png} fueron generadas con Python/Matplotlib;
-las figuras con código \texttt{tikzpicture} están generadas directamente en \LaTeX.
-\end{tcolorbox}
 
 \tableofcontents
 \newpage
@@ -796,7 +789,7 @@ El nombre ``supercrítica'' indica que las ramas nuevas aparecen del lado $\mu>0
 Las ramas inestables existen para $\mu<0$. El sistema presenta \emph{histéresis}:
 al aumentar $\mu$ más allá de cero, el sistema salta bruscamente de forma irreversible.
 
-\subsection{Resumen de tipos}
+\subsection{Tipos de bifurcaciones}
 
 \begin{center}
 \begin{tabular}{lll}
@@ -962,7 +955,7 @@ pequeñas ($\sin\theta\approx\theta$) en $\tau$ es $2\pi$, correspondiente al
 período dimensional $T=2\pi\sqrt{L/g}$.
 
 % ============================================================
-\section{Normalización del modelo logístico: resumen}
+\section{Normalización del modelo logístico}
 \label{sec:normalizacion-logistica}
 % ============================================================
 
@@ -1017,7 +1010,7 @@ Para que $X(t)$ sea solución del sistema necesitamos $X'(t)=AX(t)$, es decir,
 \]
 Por lo tanto, $X(t)=e^{\lambda t}v$ es solución \textbf{si y solo si} $\lambda$
 es valor propio de $A$ y $v$ es el vector propio correspondiente. El sistema lineal
-queda así completamente vinculado al problema de eigenvalores de $A$.
+queda así completamente vinculado al problema de valores propios de $A$.
 
 \subsection{Solución general}
 
@@ -1573,11 +1566,83 @@ de $E^*$: las soluciones son periódicas para cualquier condición inicial posit
 a la expresión final de $H(P,D)$.}
 \end{figure}
 
+\subsection{Verificación: $H$ es integral primera}
+
+Tomemos
+\[
+H(P,D)=\alpha \ln D-\beta D-\delta P+\gamma \ln P
+\]
+y el sistema
+\[
+(*)\begin{cases}
+\dfrac{dP}{dt}=\alpha P-\beta PD\\[4pt]
+\dfrac{dD}{dt}=-\gamma D+\delta PD.
+\end{cases}
+\]
+
+\textbf{Afirmación:} $H(P,D)$ es una integral primera de $(*)$, es decir, $H$ es
+constante a lo largo de cualquier solución de $(*)$.
+
+\textbf{Demostración.} Sea $X(t)=(P(t),D(t))$ una solución de $(*)$. Calculamos
+la derivada de Lie de $H$ a lo largo de $X(t)$:
+\[
+\dot{H}(t)
+\stackrel{\mathrm{def}}{=}\frac{d}{dt}H(X(t))
+=\nabla H(X(t))\cdot X'(t)
+=\left(\frac{\partial H}{\partial P},\frac{\partial H}{\partial D}\right)\cdot\bigl(P'(t),D'(t)\bigr).
+\]
+Calculando las derivadas parciales de $H$:
+\[
+\frac{\partial H}{\partial P}=-\delta+\frac{\gamma}{P},\qquad
+\frac{\partial H}{\partial D}=\frac{\alpha}{D}-\beta.
+\]
+Sustituyendo el sistema $(*)$:
+\[
+\dot{H}
+=\left(-\delta+\frac{\gamma}{P}\right)(\alpha P-\beta PD)+
+\left(\frac{\alpha}{D}-\beta\right)(-\gamma D+\delta PD).
+\]
+Expandiendo término a término:
+\[
+\dot{H}
+=-\delta\alpha P+\delta\beta PD+\gamma\alpha-\gamma\beta D
+-\alpha\gamma+\alpha\delta P+\beta\gamma D-\beta\delta PD.
+\]
+Todos los términos se cancelan:
+\[
+\dot{H}=(-\delta\alpha P+\alpha\delta P)+(\delta\beta PD-\beta\delta PD)
++(\gamma\alpha-\alpha\gamma)+(-\gamma\beta D+\beta\gamma D)=0.
+\]
+Por lo tanto $H(X(t))=\text{cte}$ para toda solución positiva. $\square$
+
+\textbf{Interpretación geométrica.} La condición $\dot{H}=0$ equivale a
+$\nabla H(X)\cdot F(X)=0$: el gradiente de $H$, que apunta en la dirección de
+máximo crecimiento de $H$, es perpendicular al campo vectorial $F$. Esto
+significa que el flujo es tangente a las curvas de nivel de $H$, y la trayectoria
+$X(t)$ se mueve sobre una de esas curvas sin abandonarla jamás.
+
+Como $H$ es estrictamente convexa con mínimo en $E^*=(\gamma/\delta,\alpha/\beta)$,
+sus curvas de nivel son cerradas alrededor de $E^*$: todas las soluciones con
+condición inicial positiva son periódicas y orbitan alrededor del equilibrio de
+coexistencia.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.92\linewidth]{fig_33_depredador_presa_integral_orbitas.png}
 \caption{Campo vectorial con curvas de nivel de $H(P,D)$: $E_1=(0,0)$ es silla,
 $E^*=(\gamma/\delta,\alpha/\beta)$ es el mínimo de $H$ y las órbitas son cerradas.}
+\end{figure}
+
+\textbf{Interpretación temporal.} Visto en el tiempo, el movimiento sobre las
+curvas de nivel de $H$ se traduce en oscilaciones desfasadas: primero crece la
+presa, esto permite que el depredador aumente, la abundancia del depredador reduce
+la presa, y la escasez de presa hace disminuir al depredador, reiniciando el ciclo.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{fig_34_depredador_presa_series_tiempo.png}
+\caption{Evolución temporal de $P(t)$ y $D(t)$: las dos poblaciones oscilan con
+desfase, en coherencia con el retrato de fases.}
 \end{figure}
 
 \begin{figure}[H]
@@ -1708,6 +1773,282 @@ modifica el crecimiento de forma asimétrica según los signos de $\beta$ y $\de
 El resultado biológico depende de si los coeficientes de competencia permiten
 la coexistencia o si una especie desplaza a la otra.
 
+\subsection{Sistema adimensionalizado y significado biológico}
+
+Normalizando cada población por su propia capacidad de carga ($u=N_1/K_1$,
+$v=N_2/K_2$) y el tiempo por la tasa de crecimiento de la primera especie
+($\tau=r_1 t$), el Modelo~2 se reduce a la forma estándar:
+\[
+\boxed{u' = u(1-u-Av),\qquad v' = \rho\, v(1-v-Bu).}
+\]
+
+\textbf{Significado de los parámetros:}
+\begin{itemize}
+    \item $u$, $v$: densidades poblacionales adimensionales (normalizadas por la
+          capacidad de carga de cada especie; $u=1$ significa que la especie 1
+          está en su capacidad de carga).
+    \item $A$: coeficiente de competencia interespecífica de $v$ sobre $u$; mide
+          cuánto inhibe la presencia de la especie 2 el crecimiento de la especie 1.
+          Si $A>1$, la especie 2 es un competidor más dañino para la especie 1 que
+          los propios individuos de la especie 1.
+    \item $B$: coeficiente de competencia interespecífica de $u$ sobre $v$; papel
+          simétrico al de $A$.
+    \item $\rho=r_2/r_1$: razón de tasas de crecimiento intrínsecas; si $\rho>1$
+          la especie 2 crece más rápido en ausencia de competencia.
+\end{itemize}
+
+\subsection{Isoclinas nulas y puntos de equilibrio}
+
+\textbf{Isoclinas nulas:}
+\begin{itemize}
+    \item Para $u'=0$: \quad $u=0$ \quad o \quad $v=\dfrac{1-u}{A}$
+          (recta con interceptos $(1,0)$ y $(0,1/A)$).
+    \item Para $v'=0$: \quad $v=0$ \quad o \quad $v=1-Bu$
+          (recta con interceptos $(1/B,0)$ y $(0,1)$).
+\end{itemize}
+
+\textbf{Puntos de equilibrio.} Combinando las condiciones $u'=0$ y $v'=0$:
+
+\begin{itemize}
+    \item $E_1=(0,0)$: extinción de ambas especies.
+    \item $E_2=(0,1)$: extinción de la especie 1, especie 2 en su capacidad de carga.
+    \item $E_3=(1,0)$: extinción de la especie 2, especie 1 en su capacidad de carga.
+    \item $E^*$: coexistencia interior, solución del sistema lineal
+\[
+u + Av = 1,\qquad Bu + v = 1,
+\]
+que en forma matricial es
+\[
+\underbrace{\begin{pmatrix}1 & A\\ B & 1\end{pmatrix}}_{\Delta}
+\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+El determinante es $\det\Delta=1-AB$. Si $AB\neq 1$, existe una única solución:
+\[
+\begin{pmatrix}u\\v\end{pmatrix}
+=\frac{1}{1-AB}
+\begin{pmatrix}1 & -A\\-B & 1\end{pmatrix}
+\begin{pmatrix}1\\1\end{pmatrix}
+=\frac{1}{1-AB}\begin{pmatrix}1-A\\1-B\end{pmatrix}.
+\]
+Por lo tanto:
+\[
+\boxed{E^*=\left(\frac{1-A}{1-AB},\;\frac{1-B}{1-AB}\right).}
+\]
+Este equilibrio interior pertenece al primer cuadrante (coexistencia biológicamente
+viable) cuando $1-A$ y $1-B$ tienen el mismo signo que $1-AB$.
+\end{itemize}
+
+\subsection{Estabilidad local de los equilibrios}
+
+El jacobiano del sistema es
+\[
+DF(u,v)=
+\begin{pmatrix}
+1-2u-Av & -Au\\
+-\rho Bv & \rho(1-2v-Bu)
+\end{pmatrix}.
+\]
+
+\textbf{Equilibrio $E_1=(0,0)$:}
+\[
+DF(E_1)=\begin{pmatrix}1 & 0\\ 0 & \rho\end{pmatrix}.
+\]
+Los valores propios son $\lambda_1=1>0$ y $\lambda_2=\rho>0$. $E_1$ es hiperbólico
+y el sistema linealizado es una \textbf{fuente}. Por el teorema de Hartman-Grobman,
+$E_1$ es también una fuente para el sistema no lineal. Biológicamente, esto significa
+que cuando ambas poblaciones son raras, ambas crecen: la extinción simultánea es
+inestable.
+
+\textbf{Equilibrio $E_2=(0,1)$:}
+\[
+DF(E_2)=\begin{pmatrix}1-A & 0\\ -\rho B & -\rho\end{pmatrix}.
+\]
+Los valores propios son $\lambda_1=1-A$ y $\lambda_2=-\rho<0$. La estabilidad
+depende del signo de $1-A$:
+\begin{itemize}
+    \item Si $A>1$: $\lambda_1<0$, ambos valores propios son negativos, $E_2$ es
+          \textbf{sumidero} (asintóticamente estable). La especie 2 excluye a la especie 1.
+    \item Si $A<1$: $\lambda_1>0$, los valores propios tienen signos opuestos, $E_2$
+          es una \textbf{silla} (inestable). La especie 1 puede invadir.
+\end{itemize}
+
+\textbf{Equilibrio $E_3=(1,0)$:}
+\[
+DF(E_3)=\begin{pmatrix}-1 & -A\\ 0 & \rho(1-B)\end{pmatrix}.
+\]
+Los valores propios son $\lambda_1=-1<0$ y $\lambda_2=\rho(1-B)$. La estabilidad
+depende del signo de $1-B$:
+\begin{itemize}
+    \item Si $B>1$: $\lambda_2<0$, ambos valores propios son negativos, $E_3$ es
+          \textbf{sumidero} (asintóticamente estable). La especie 1 excluye a la especie 2.
+    \item Si $B<1$: $\lambda_2>0$, los valores propios tienen signos opuestos, $E_3$
+          es una \textbf{silla} (inestable). La especie 2 puede invadir.
+\end{itemize}
+
+\textbf{Equilibrio interior $E^*$:} su estabilidad depende de los valores de $A$
+y $B$ y requiere evaluar $DF(E^*)$. El resultado cualitativo es que si $A<1$ y
+$B<1$ (competencia interespecífica débil), $E^*$ es asintóticamente estable y
+hay coexistencia; si $A>1$ y $B>1$ (competencia interespecífica fuerte), $E^*$
+es inestable y el resultado depende de la condición inicial (bistabilidad).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{fig_35_competencia_26Jun26.png}
+\caption{Retrato de fase del sistema de competencia: ejes invariantes,
+isoclinas nulas (recta de $u'=0$ con interceptos $(1,0)$ y $(0,1/A)$;
+recta de $v'=0$ con interceptos $(1/B,0)$ y $(0,1)$), trayectorias
+representativas y los cuatro equilibrios $E_1$, $E_2$, $E_3$ y $E^*$.}
+\end{figure}
+
+\subsection{29/06/2026}
+
+Retomamos el sistema adimensionalizado de competencia entre dos especies:
+\[
+\dot u = u(1-u-\alpha v), \qquad
+\dot v = \rho\,v(1-v-\beta u),
+\]
+con $\alpha,\beta,\rho>0$.
+
+\subsubsection*{Isoclinas nulas y puntos de equilibrio}
+
+Las isoclinas nulas son:
+\begin{itemize}
+    \item Para $\dot u=0$: $u=0$ \quad o \quad $1-u-\alpha v=0$.
+    \item Para $\dot v=0$: $v=0$ \quad o \quad $1-v-\beta u=0$.
+\end{itemize}
+
+Combinando las condiciones $\dot u=0$ y $\dot v=0$ se obtienen cuatro puntos de equilibrio:
+\begin{enumerate}
+    \item $E_1=(0,0)$.
+    \item $u=0$, $1-v-\beta u=0 \Rightarrow v=1$, luego $E_2=(0,1)$.
+    \item $v=0$, $1-u-\alpha v=0 \Rightarrow u=1$, luego $E_3=(1,0)$.
+    \item El equilibrio interior $E^*$ satisface simultáneamente
+    \[
+    u+\alpha v=1,\qquad \beta u+v=1,
+    \]
+    es decir, el sistema lineal
+    \[
+    \begin{pmatrix}1 & \alpha\\ \beta & 1\end{pmatrix}
+    \begin{pmatrix}u\\v\end{pmatrix}
+    =\begin{pmatrix}1\\1\end{pmatrix}.
+    \]
+    El determinante de la matriz de coeficientes es $1-\alpha\beta$. Si $\alpha\beta\neq 1$, la solución única es
+    \[
+    \begin{pmatrix}u^*\\v^*\end{pmatrix}
+    =\frac{1}{1-\alpha\beta}
+    \begin{pmatrix}1 & -\alpha\\-\beta & 1\end{pmatrix}
+    \begin{pmatrix}1\\1\end{pmatrix}
+    =\frac{1}{1-\alpha\beta}\begin{pmatrix}1-\alpha\\1-\beta\end{pmatrix},
+    \]
+    es decir,
+    \[
+    \boxed{E^*=\left(\frac{1-\alpha}{1-\alpha\beta},\;\frac{1-\beta}{1-\alpha\beta}\right).}
+    \]
+\end{enumerate}
+
+\begin{observacion}{Positividad del equilibrio interior}{}
+El equilibrio $E^*$ pertenece al primer cuadrante ($u^*,v^*>0$) exactamente en dos casos:
+\begin{itemize}
+    \item \textbf{Caso $0<\alpha,\beta<1$:} entonces $1-\alpha>0$, $1-\beta>0$ y $1-\alpha\beta>0$,
+          por lo que $u^*=(+)/(+)>0$ y $v^*=(+)/(+)>0$.
+    \item \textbf{Caso $\alpha,\beta>1$:} entonces $1-\alpha<0$, $1-\beta<0$ y $1-\alpha\beta<0$,
+          por lo que $u^*=(-)/(-)>0$ y $v^*=(-)/(-)>0$.
+\end{itemize}
+En cualquier otro caso $E^*$ no es biológicamente viable.
+\end{observacion}
+
+\subsubsection*{Análisis de signos del campo}
+
+El signo de cada componente del campo queda determinado por la posición relativa a las isoclinas:
+\begin{itemize}
+    \item $\dot u > 0$ si y solo si $u>0$ y $v < \dfrac{1-u}{\alpha}$,
+          es decir, para puntos del primer cuadrante \emph{por debajo} de la recta $1-u-\alpha v=0$.
+    \item $\dot u < 0$ para puntos del primer cuadrante \emph{por encima} de esa recta.
+\end{itemize}
+Un argumento análogo aplica para $\dot v$ respecto a la recta $1-v-\beta u=0$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{fig_36_competencia_bosquejo_29Jun26.png}
+\caption{Bosquejo del plano de fases a partir de las isoclinas nulas y los signos de $\dot u$ y $\dot v$.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{fig_37_competencia_completa_29Jun26.png}
+\caption{Retrato completo del plano de fases para el sistema de competencia, con dirección del campo y trayectorias representativas.}
+\end{figure}
+
+\subsubsection*{Estabilidad lineal de los equilibrios: caso $0<\alpha,\beta<1$}
+
+El jacobiano del sistema es
+\[
+J(u,v)=
+\begin{pmatrix}
+1-2u-\alpha v & -\alpha u\\
+-\rho\beta v & \rho(1-2v-\beta u)
+\end{pmatrix}.
+\]
+
+\textbf{Equilibrio $E_1=(0,0)$:}
+\[
+J(E_1)=\begin{pmatrix}1 & 0\\ 0 & \rho\end{pmatrix}.
+\]
+Los valores propios $\lambda_1=1>0$ y $\lambda_2=\rho>0$ son positivos; $E_1$ es hiperbólico.
+Por el teorema de Hartman--Grobman, $E_1$ es localmente una \textbf{fuente}.
+
+\textbf{Equilibrio $E_2=(0,1)$:}
+\[
+J(E_2)=\begin{pmatrix}1-\alpha & 0\\ -\rho\beta & -\rho\end{pmatrix}.
+\]
+Al ser triangular, los valores propios son $\lambda_1=1-\alpha$ y $\lambda_2=-\rho<0$.
+Como $0<\alpha<1$, se tiene $\lambda_1>0$: los valores propios tienen signos opuestos.
+$E_2$ es hiperbólico y, por Hartman--Grobman, localmente un \textbf{punto silla}.
+
+\textbf{Equilibrio $E_3=(1,0)$:}
+\[
+J(E_3)=\begin{pmatrix}-1 & -\alpha\\ 0 & \rho(1-\beta)\end{pmatrix}.
+\]
+Al ser triangular, los valores propios son $\lambda_1=-1<0$ y $\lambda_2=\rho(1-\beta)$.
+Como $0<\beta<1$, se tiene $\lambda_2>0$: los valores propios tienen signos opuestos.
+$E_3$ es hiperbólico y localmente un \textbf{punto silla}.
+
+\subsubsection*{Estabilidad del equilibrio interior $E^*$}
+
+\begin{observacion}{Traza y determinante en una matriz $2\times 2$}{}
+Para cualquier matriz $A$ de $2\times 2$: la traza es la suma de los valores propios y el determinante es su producto. En particular:
+\begin{itemize}
+    \item $\det(A)>0$ implica que los valores propios tienen el mismo signo (o son complejos conjugados con parte real del mismo signo).
+    \item $\det(A)<0$ implica que los valores propios tienen signos opuestos (punto silla).
+    \item El signo de $\operatorname{Tr}(A)$ determina si la suma es positiva o negativa.
+\end{itemize}
+\end{observacion}
+
+Como $(u^*,v^*)$ satisface las ecuaciones de isoclinas, se pueden simplificar las entradas del jacobiano:
+\[
+1-u^*-\alpha v^*=0 \;\Rightarrow\; 1-2u^*-\alpha v^* = -u^*,
+\]
+\[
+1-v^*-\beta u^*=0 \;\Rightarrow\; 1-2v^*-\beta u^* = -v^*.
+\]
+El jacobiano evaluado en $E^*$ se reduce a la forma elegante:
+\[
+\boxed{J(E^*)=\begin{pmatrix}-u^* & -\alpha u^*\\ -\rho\beta v^* & -\rho v^*\end{pmatrix}.}
+\]
+
+\begin{observacion}{Traza de $J(E^*)$ en el caso $0<\alpha,\beta<1$}{}
+Como $u^*,v^*>0$, la traza satisface
+\[
+\operatorname{Tr}(J(E^*))=-u^*-\rho v^*<0.
+\]
+Esto garantiza que al menos uno de los valores propios es negativo. La clasificación completa de $E^*$ depende del signo del determinante:
+si $\det(J(E^*))>0$, ambos valores propios son negativos y $E^*$ es un \textbf{sumidero} (coexistencia estable);
+si $\det(J(E^*))<0$, los valores propios tienen signos opuestos y $E^*$ es una \textbf{silla} (bistabilidad).
+\end{observacion}
+
+% Pendiente: análisis de imágenes 7 y 8.
+
 % ============================================================
 \section{Dinámica de dos poblaciones: modelo general}
 \label{sec:modelo-general-dos-poblaciones}
@@ -1725,7 +2066,7 @@ la respuesta funcional de Holling tipo II: $f(P)=P/(1+hP)$, que satura
 cuando la presa es abundante.
 
 % ============================================================
-\section{Problemas de la tarea (referencia)}
+\section{Ejercicios de cierre y correspondencias}
 \label{sec:tarea-referencia}
 % ============================================================
 
@@ -1740,7 +2081,7 @@ cuando la presa es abundante.
 
 \subsection{Estabilidad: modelo logístico}
 
-Los incisos (a)--(e) quedan cubiertos en la Sección~\ref{sec:modelo-logistico}:
+Los incisos (a)--(e) se desarrollan en la Sección~\ref{sec:modelo-logistico}:
 equilibrios, análisis geométrico, linealización, concordancia y solución analítica.
 
 \subsection{Adimensionalización}
@@ -1756,10 +2097,10 @@ equilibrios, análisis geométrico, linealización, concordancia y solución ana
 
 \subsection{Bifurcaciones (al menos 5 de 10)}
 
-La Sección~\ref{sec:bifurcaciones-unidim} cubre los tipos silla-nodo,
+La Sección~\ref{sec:bifurcaciones-unidim} reúne los tipos silla-nodo,
 transcrítica, pitchfork supercrítica y pitchfork subcrítica con ejemplos
 canónicos que corresponden directamente a los ejercicios (a), (b), (c), (d),
-(f), (g), (h) de la tarea.
+(f), (g), (h) del listado.
 
 \subsection{Sistemas lineales y Hartman-Grobman}
 

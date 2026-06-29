@@ -1209,8 +1209,8 @@ def save_fig_predator_prey_first_integral_derivation(path: str) -> None:
     box(0.38, 0.80, r"$\dfrac{dD}{dP}=\dfrac{D(-\gamma+\delta P)}{P(\alpha-\beta D)}$", color="#8B0000", fs=16)
     box(0.38, 0.67, r"$\left(\dfrac{-\gamma+\delta P}{P}\right)dP=\left(\dfrac{\alpha-\beta D}{D}\right)dD$", color="#8B0000", fs=15)
     box(0.16, 0.52, r"$\int\left(-\dfrac{\gamma}{P}+\delta\right)dP=\int\left(\dfrac{\alpha}{D}-\beta\right)dD$", color="#8B0000", fs=15)
-    box(0.16, 0.40, r"$-\gamma\ln P+\delta P=\alpha\ln D-\beta D + C$", color="#8B0000", fs=16)
-    box(0.16, 0.28, r"$H(P,D)=-\gamma\ln P+\delta P+\beta D-\alpha\ln D$", color="#2AA198", fs=16)
+    box(0.16, 0.40, r"$\alpha\ln D-\beta D=\delta P-\gamma\ln P + C$", color="#8B0000", fs=16)
+    box(0.16, 0.28, r"$H(P,D)=\alpha\ln D-\beta D-\delta P+\gamma\ln P$", color="#2AA198", fs=16)
     box(0.16, 0.17, r"$H(P,D)=\mathrm{cte.}$", color="#D1495B", fs=17, fc="#FFF6F6", ec="#D1495B")
 
     ax.text(
@@ -1276,6 +1276,53 @@ def save_fig_predator_prey_first_integral_orbits(path: str) -> None:
     plt.close(fig)
 
 
+def save_fig_predator_prey_time_series(path: str) -> None:
+    """Time evolution of prey and predator populations for the normalized model."""
+    fig, ax = plt.subplots(figsize=(8.4, 4.8))
+    fig.patch.set_facecolor("white")
+
+    def field(state: np.ndarray) -> np.ndarray:
+        p, d = state
+        return np.array([p * (1.0 - d), d * (p - 1.0)])
+
+    tt = np.linspace(0.0, 22.0, 1200)
+    p, d = _rk4_trajectory(field, np.array([1.8, 0.7], dtype=float), tmax=22.0, n=1200)
+
+    ax.plot(tt, p, color="#355CFF", lw=2.0, label=r"$P(t)$ presa")
+    ax.plot(tt, d, color="#D1495B", lw=2.0, label=r"$D(t)$ depredador")
+    ax.axhline(1.0, color="#666666", lw=1.0, ls="--", alpha=0.45)
+
+    ax.set_xlim(tt[0], tt[-1])
+    ymax = float(np.max([np.max(p), np.max(d)]))
+    ax.set_ylim(0.0, ymax + 0.25)
+    ax.set_xlabel(r"$t$")
+    ax.set_ylabel("Poblacion")
+    ax.set_title("Oscilaciones desfasadas de presa y depredador")
+    ax.grid(alpha=0.2)
+    ax.legend(frameon=False, loc="upper right")
+
+    ax.text(
+        0.02,
+        0.18,
+        "Las oscilaciones reflejan el retraso\nentre el crecimiento de la presa y la respuesta del depredador.",
+        transform=ax.transAxes,
+        fontsize=9.7,
+        color="#444444",
+    )
+    ax.text(
+        0.02,
+        0.07,
+        "Es la proyeccion temporal de las\norbitas cerradas del plano fase.",
+        transform=ax.transAxes,
+        fontsize=9.5,
+        color="#444444",
+    )
+
+    fig.tight_layout()
+    fig.savefig(path, dpi=260, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     save_fig_center_periodic("fig_18_sistema_lineal_periodico.png")
     save_fig_spiral_no_example("fig_19_no_ejemplo_espiral.png")
@@ -1293,6 +1340,7 @@ def main() -> None:
     save_fig_logistic_harvest("fig_31_cosecha_logistica.png")
     save_fig_predator_prey_first_integral_derivation("fig_32_depredador_presa_integral_derivacion.png")
     save_fig_predator_prey_first_integral_orbits("fig_33_depredador_presa_integral_orbitas.png")
+    save_fig_predator_prey_time_series("fig_34_depredador_presa_series_tiempo.png")
     save_fig_saddle_portrait("fig_14_flujo_silla.png")
     save_fig_flow_segment("fig_15_flujo_orbita.png")
     save_fig_flow_composition("fig_16_flujo_composicion.png")

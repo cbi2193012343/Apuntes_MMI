@@ -138,8 +138,8 @@
         \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
         \draw[->] (0,-0.2) -- (0,3.2) node[above] {$y$};
         \draw[thick] (0,0) -- (3.2,3.2) node[right] {$y=x$};
-        \draw[thick,blue,domain=0:3.4,smooth] plot (\x,{0.8+0.55*\x+0.18*sin(120*\x)});
-        \filldraw[red] (1.9,1.9) circle (2pt) node[below right] {$p$};
+        \draw[thick,blue,domain=0:3.4,smooth] plot (\x,{1.8+0.55*(\x-1.8)+0.18*sin(120*(\x-1.8))});
+        \filldraw[red] (1.8,1.8) circle (2pt) node[below right] {$p$};
     \end{tikzpicture}
     \end{center}
 \end{frame}

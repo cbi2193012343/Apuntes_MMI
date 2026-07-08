@@ -12,11 +12,25 @@
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{tikz}
 \usepackage{booktabs}
+\usepackage{listings}
 
 \usetheme{Madrid}
 \usecolortheme{default}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{blue!70!black},
+    commentstyle=\color{green!45!black}\itshape,
+    stringstyle=\color{orange!80!black},
+    showstringspaces=false,
+    columns=fullflexible,
+    aboveskip=0pt,
+    belowskip=0pt,
+}
+\newsavebox{\codebox}
 
 \newcommand{\Fmu}{F_\mu}
 \newcommand{\Tdos}{T_2}
@@ -285,17 +299,14 @@
 \end{frame}
 
 % 17
-\begin{frame}{Diagrama de bifurcaci\'on log\'istico}
-    \begin{itemize}
-        \item Eje horizontal: par\'ametro $\mu$.
-        \item Eje vertical: valores asint\'oticos de $x_n$.
-        \item Lectura:
-        \begin{itemize}
-            \item una rama: punto fijo atractor;
-            \item dos ramas: ciclo de periodo $2$;
-            \item muchas ramas: din\'amica compleja o ca\'otica.
-        \end{itemize}
-    \end{itemize}
+\begin{frame}[fragile]{Diagrama de bifurcaci\'on log\'istico}
+    \begin{columns}[c]
+        \column{0.56\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{logistic-map-fig/logistic_map.png}
+        \column{0.44\textwidth}
+            \lstinputlisting[basicstyle=\ttfamily\fontsize{6.3}{7.0}\selectfont]{logistic-map-fig/logistic_simple.py}
+    \end{columns}
 \end{frame}
 
 % 18
@@ -314,6 +325,13 @@
     \end{itemize}
 \end{frame}
 
+% 18b
+\begin{frame}{La funci\'on $T_\mu(x)=\mu\min(x,1-x)$}
+    \begin{center}
+        \includegraphics[height=0.8\textheight]{tent-map-fig/tent_function.png}
+    \end{center}
+\end{frame}
+
 % 19
 \begin{frame}{Map tent y codificaci\'on simb\'olica}
     \begin{itemize}
@@ -328,6 +346,17 @@
         \]
         \item Esto conecta el map tent con la din\'amica simb\'olica.
     \end{itemize}
+\end{frame}
+
+% 19b
+\begin{frame}[fragile]{Diagrama de bifurcaci\'on del map tent}
+    \begin{columns}[c]
+        \column{0.56\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{tent-map-fig/tent_map.png}
+        \column{0.44\textwidth}
+            \lstinputlisting[basicstyle=\ttfamily\fontsize{7.4}{8.2}\selectfont]{tent-map-fig/bifurcacion_simple.py}
+    \end{columns}
 \end{frame}
 
 % 20

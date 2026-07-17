@@ -1,289 +1,466 @@
 \documentclass[11pt,letterpaper]{article}
 
-% =========================================================
-% Documento base de exposicion
-% Tema: funciones iteradas, diagrama de bifurcacion logistico y map tent
-% Enfoque: curso de Modelos Matematicos I
-% =========================================================
-
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{geometry}
-\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{tikz}
-\usepackage{array}
-\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
 \usepackage{mathtools}
+\usepackage{placeins}
+\usetikzlibrary{babel}
 
 \geometry{margin=2.4cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
-\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt}
-\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=0pt}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue!70!black},
+    commentstyle=\color{green!45!black}\itshape,
+    stringstyle=\color{orange!80!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    columns=fullflexible,
+    captionpos=b
+}
+\renewcommand{\lstlistingname}{Código}
 
 \newcommand{\Fmu}{F_\mu}
 \newcommand{\Tdos}{T_2}
 \newcommand{\orb}{\mathcal O^+}
 
-\title{Documento base para exposici\'on\\Funciones iteradas, bifurcaci\'on log\'istica y map tent}
-\author{Alejandro Cruz L\'opez \\
+\newtheorem{teorema}{Teorema}[section]
+\theoremstyle{definition}
+\newtheorem{definicion}[teorema]{Definición}
+\theoremstyle{remark}
+\newtheorem{observacion}[teorema]{Observación}
+\newenvironment{demostracion}{\begin{proof}[Demostración]}{\end{proof}}
+
+\title{Funciones iteradas, bifurcación logística y map tent}
+\author{Alejandro Cruz López \\
         Sergio Antonio Hernández Peralta}
-\date{Modelos Matem\'aticos I}
+\date{Modelos Matemáticos I}
 
 \begin{document}
 \maketitle
 
-\section*{Prop\'osito del documento}
-Este documento organiza el contenido base para una exposici\'on de aproximadamente veinte minutos. El objetivo no es presentar el tema como un cap\'itulo aislado de sistemas din\'amicos, sino explicarlo desde las herramientas usadas en el curso de Modelos Matem\'aticos I: modelaci\'on, variables de estado, equilibrio, estabilidad, linealizaci\'on, adimensionalizaci\'on y bifurcaciones. El texto de Devaney se usa como referencia para el enfoque de funciones iteradas, mapa log\'istico discreto, diagramas de bifurcaci\'on y map tent; los apuntes del curso se usan para fijar el lenguaje de modelos continuos, equilibrios, estabilidad y bifurcaciones.
+El objetivo es estudiar cómo una regla de evolución en tiempo discreto puede producir estados estacionarios, órbitas periódicas, bifurcaciones y comportamiento caótico. El análisis utiliza equilibrio, estabilidad, linealización y adimensionalización para relacionar los modelos continuos del curso con las familias logística y \emph{map tent}.
 
-\section*{Idea conductora de la exposici\'on}
-La narrativa central debe ser:
+\section{Del tiempo continuo al tiempo discreto}
+\label{sec:continuo-discreto}
+
+En un modelo autónomo escalar, el estado \(y(t)\) satisface
 \[
-\text{modelo continuo}\longrightarrow \text{modelo discreto}\longrightarrow \text{iteraci\'on}\longrightarrow \text{\'orbitas}\longrightarrow \text{estabilidad}\longrightarrow \text{bifurcaci\'on}\longrightarrow \text{caos}.
+\frac{dy}{dt}=g(y).
 \]
-En el curso se estudiaron ecuaciones aut\'onomas de la forma
+El valor \(g(y(t))\) determina la tasa instantánea de cambio y depende sólo del estado actual \cite{ApuntesMM1_2026}. El modelo genera una curva solución \(t\mapsto y(t)\).
+
+En tiempo discreto, el estado se registra en periodos sucesivos y queda descrito por una sucesión \(n\mapsto x_n\). Una regla de actualización determina el paso de \(x_n\) a \(x_{n+1}\); su formulación matemática se establece en la sección siguiente \cite{HirschSmaleDevaney2013}.
+
+\section{Funciones iteradas}
+\label{sec:funciones-iteradas}
+
+\subsection{Función como regla de evolución}
+
+Sea \(I\subseteq\mathbb R\) el espacio de estados y sea \(f\colon I\to I\). La elección del codominio \(I\) expresa que cada actualización permanece en el espacio de estados. Dado \(x_0\in I\), la recurrencia
 \[
-\frac{dy}{dt}=f(y),
+x_{n+1}=f(x_n),\qquad n\in\mathbb N_0,
 \]
-donde el signo de $f(y)$, los equilibrios y la linealizaci\'on organizan el comportamiento cualitativo. En esta exposici\'on se transfiere esa misma manera de pensar al caso discreto:
+determina la evolución discreta \cite{HirschSmaleDevaney2013}. En particular,
 \[
-x_{n+1}=f(x_n).
+x_1=f(x_0),
+\qquad
+x_2=f(f(x_0)),
 \]
+por lo que el análisis de varios periodos requiere componer \(f\) consigo misma.
 
-\section*{Esquema general de veinte diapositivas}
+\subsection{Iteraciones de una función}
 
-\begin{center}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.08\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.48\textwidth}}
-\toprule
-\textbf{No.} & \textbf{Tema} & \textbf{Funci\'on dentro de la exposici\'on}\\
-\midrule
-1 & T\'itulo y objetivo & Presentar el tema y anunciar que se abordar\'a desde modelos matem\'aticos.\\
-2 & Puente con el curso & Pasar de EDOs aut\'onomas a mapas discretos.\\
-3 & Funci\'on como regla de evoluci\'on & Interpretar una funci\'on como mecanismo de cambio temporal.\\
-4 & Iteraci\'on & Definir $f^n$ y la sucesi\'on generada por el modelo.\\
-5 & \textit{\'Orbitas} & Introducir el objeto que reemplaza a la curva soluci\'on continua.\\
-6 & Equilibrio continuo vs punto fijo discreto & Conectar $f(y^*)=0$ con $f(p)=p$.\\
-7 & Puntos fijos & Mostrar c\'omo se calculan y se interpretan.\\
-8 & Estabilidad & Comparar el criterio continuo con el discreto.\\
-9 & Linealizaci\'on & Explicar por qu\'e la derivada decide atracci\'on o repulsi\'on.\\
-10 & Log\'istico continuo & Recordar el modelo del curso.\\
-11 & Normalizaci\'on & Mostrar c\'omo se eliminan par\'ametros dimensionales.\\
-12 & Log\'istico discreto & Introducir $x_{n+1}=\mu x_n(1-x_n)$.\\
-13 & Puntos fijos log\'isticos & Resolver $\Fmu(x)=x$.\\
-14 & Estabilidad log\'istica & Aplicar $|\Fmu'(p)|<1$.\\
-15 & Bifurcaci\'on & Pasar de estabilidad de equilibrios a estabilidad de ciclos.\\
-16 & Duplicaci\'on de periodo & Explicar la ruta $1\to2\to4\to8\to\cdots$.\\
-17 & Diagrama de bifurcaci\'on & Ense\~nar c\'omo leer el diagrama.\\
-18 & Map tent & Presentar el modelo lineal por partes.\\
-19 & Codificaci\'on simb\'olica & Explicar la partici\'on izquierda/derecha y sucesiones.\\
-20 & Cierre & Sintetizar herramientas del curso y aportaci\'on de Devaney.\\
-\bottomrule
-\end{tabular}
-\end{center}
+La iteración de orden cero es \(f^0=\operatorname{id}_I\). Para cada \(n\in\mathbb N_0\), se define recursivamente
+\[
+f^{n+1}=f\circ f^n.
+\]
+Así, \(f^2=f\circ f\), \(f^3=f\circ f\circ f\) y
+\[
+x_n=f^n(x_0),\qquad n\in\mathbb N_0.
+\]
+El superíndice denota composición reiterada, no una potencia algebraica de los valores de \(f\) \cite{Devaney1989}.
 
-\newpage
+\subsection{Trayectoria y órbita positiva}
 
-\section{Diapositiva 1: T\'itulo y objetivo}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item T\'itulo: \emph{Funciones iteradas, bifurcaci\'on log\'istica y map tent}.
-    \item Subt\'itulo: \emph{Una lectura desde Modelos Matem\'aticos I}.
-    \item Objetivo: explicar c\'omo una regla simple de evoluci\'on puede generar equilibrio, oscilaciones, bifurcaciones y caos.
-\end{itemize}
-\textbf{Descripci\'on oral.} La exposici\'on debe iniciar aclarando que se tomar\'an las herramientas del curso y se aplicar\'an al caso discreto. No se debe comenzar directamente con caos; primero se debe construir la analog\'ia con modelos aut\'onomos.
+La trayectoria iniciada en \(x_0\) es la sucesión ordenada
+\[
+\bigl(f^n(x_0)\bigr)_{n\geq0}
+=
+\bigl(x_0,f(x_0),f^2(x_0),\ldots\bigr),
+\]
+mientras que su órbita positiva es el conjunto
+\[
+\orb(x_0)=\{f^n(x_0):n\in\mathbb N_0\}.
+\]
+La trayectoria conserva el orden temporal; la órbita positiva registra los estados alcanzados.
 
-\section{Diapositiva 2: Puente con el curso}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Modelo continuo: $y'=f(y)$.
-    \item Modelo discreto: $x_{n+1}=f(x_n)$.
-    \item En ambos casos, el estado actual determina la evoluci\'on.
-\end{itemize}
-\textbf{Descripci\'on oral.} En el curso, las ecuaciones aut\'onomas se analizaban por signo, equilibrios y estabilidad. La versi\'on discreta conserva la idea de estado, pero sustituye la curva soluci\'on por una sucesi\'on.
+Entre los comportamientos relevantes se encuentran la convergencia asintótica, la periodicidad eventual y las trayectorias que no satisfacen ninguna de estas dos propiedades. Estas posibilidades no forman categorías disjuntas: una trayectoria eventualmente constante es periódica y convergente \cite{Devaney1989}.
 
-\section{Diapositiva 3: Funci\'on como regla de evoluci\'on}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Una funci\'on $f:I\to I$ actualiza el estado.
-    \item Si $x_n$ es el estado actual, entonces $x_{n+1}=f(x_n)$.
-    \item El inter\'es est\'a en el comportamiento a largo plazo.
-\end{itemize}
-\textbf{Descripci\'on oral.} Se debe insistir en que una funci\'on deja de ser solo una regla algebraica y se convierte en un modelo din\'amico cuando se aplica repetidamente.
+\section{Puntos fijos y estabilidad}
+\label{sec:puntos-fijos-estabilidad}
 
-\section{Diapositiva 4: Iteraci\'on}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item $f^2=f\circ f$, $f^3=f\circ f\circ f$.
-    \item En general, $f^n$ es la composici\'on de $f$ consigo misma $n$ veces.
-    \item Trayectoria discreta: $x_0,x_1,x_2,\ldots$.
-\end{itemize}
-\textbf{Descripci\'on oral.} Aqu\'i debe quedar claro que el an\'alisis no se agota en calcular $f(x)$ una vez. La pregunta central es qu\'e ocurre despu\'es de muchas iteraciones.
+\subsection{Equilibrio continuo y punto fijo discreto}
 
-\section{Diapositiva 5: \textit{\'Orbitas}}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Definici\'on: $\orb(x)=\{x,f(x),f^2(x),\ldots\}$.
-    \item Posibles comportamientos: convergencia, periodicidad, irregularidad.
-    \item Analog\'ia: la \textit{\'orbita} cumple el papel de la soluci\'on temporal.
-\end{itemize}
-\textbf{Descripci\'on oral.} La \textit{\'orbita} permite hablar del destino del sistema. En modelos matem\'aticos, esto equivale a preguntar si el sistema se estabiliza, oscila o se vuelve impredecible.
+En la ecuación autónoma \(dy/dt=g(y)\), la estacionariedad se expresa mediante \(g(y^*)=0\); en ese caso, \(y(t)=y^*\) es una solución constante \cite{ApuntesMM1_2026}. En el sistema discreto, el concepto correspondiente es el punto fijo.
 
-\section{Diapositiva 6: Equilibrio continuo vs punto fijo discreto}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item En EDO: $y^*$ es equilibrio si $f(y^*)=0$.
-    \item En mapas: $p$ es punto fijo si $f(p)=p$.
-    \item Ambos representan estados invariantes.
-\end{itemize}
-\textbf{Descripci\'on oral.} La comparaci\'on debe hacerse con cuidado: en una EDO el equilibrio anula la velocidad; en un mapa, el punto fijo permanece igual despu\'es de aplicar la funci\'on.
+\begin{definicion}[Punto fijo]
+Sea \(f\colon I\to I\). Un punto \(p\in I\) es fijo si
+\[
+f(p)=p.
+\]
+\end{definicion}
 
-\section{Diapositiva 7: Puntos fijos}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Ecuaci\'on de punto fijo: $f(p)=p$.
-    \item Interpretaci\'on gr\'afica: intersecci\'on de $y=f(x)$ con $y=x$.
-    \item Los puntos fijos son candidatos a estados estacionarios.
-\end{itemize}
-\textbf{Descripci\'on oral.} Conviene enfatizar que esta es la primera pregunta cualitativa: antes de estudiar caos, se debe saber si existen estados estacionarios.
+Si \(x_0=p\), entonces \(x_n=f^n(p)=p\) para todo \(n\in\mathbb N_0\). Gráficamente, un punto fijo es una intersección de \(y=f(x)\) con \(y=x\). La Figura~\ref{fig:punto-fijo-interseccion} muestra esta interpretación para \(F_2(x)=2x(1-x)\), mapa que se estudia en la Sección~\ref{sec:logistico-discreto}.
 
-\section{Diapositiva 8: Estabilidad de puntos fijos}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Criterio continuo: $f'(y^*)<0$ estable; $f'(y^*)>0$ inestable.
-    \item Criterio discreto: $|f'(p)|<1$ atractor; $|f'(p)|>1$ repulsor.
-    \item El caso $|f'(p)|=1$ es cr\'itico.
-\end{itemize}
-\textbf{Descripci\'on oral.} Se debe destacar que el valor absoluto aparece porque, en tiempo discreto, una perturbaci\'on puede cambiar de signo en cada iteraci\'on y aun as\'i disminuir en magnitud.
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[x=6cm,y=5cm]
+        \draw[->] (-0.03,0) -- (1.08,0) node[right] {$x$};
+        \draw[->] (0,-0.03) -- (0,1.08) node[above] {$y$};
+        \draw[thick] plot[domain=0:1] (\x,\x)
+            node[above right] {$y=x$};
+        \draw[thick,blue] plot[domain=0:1,samples=100]
+            (\x,{2*\x*(1-\x)})
+            node[below right] {$y=F_2(x)$};
+        \filldraw[red] (0,0) circle (0.8pt)
+            node[below right] {$p_0$};
+        \filldraw[red] (0.5,0.5) circle (0.8pt)
+            node[above left] {$p_2$};
+    \end{tikzpicture}
+    \caption{Puntos fijos del mapa \(F_2\) como intersecciones con la recta \(y=x\).}
+    \label{fig:punto-fijo-interseccion}
+\end{figure}
 
-\section{Diapositiva 9: Linealizaci\'on}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Cerca de $p$, $f(x)\approx f(p)+f'(p)(x-p)$.
-    \item Como $f(p)=p$, entonces $x_{n+1}-p\approx f'(p)(x_n-p)$.
-    \item La derivada act\'ua como factor local de amplificaci\'on.
-\end{itemize}
-\textbf{Descripci\'on oral.} Esta diapositiva es el puente t\'ecnico m\'as importante: conecta directamente con la linealizaci\'on estudiada en el curso.
+\subsection{Linealización alrededor de un punto fijo}
 
-\section{Diapositiva 10: Modelo log\'istico continuo}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Modelo: $\dfrac{dN}{dt}=rN\left(1-\dfrac{N}{K}\right)$.
-    \item Equilibrios: $N=0$ y $N=K$.
-    \item Interpretaci\'on: $K$ es capacidad de carga.
-\end{itemize}
-\textbf{Descripci\'on oral.} Esta diapositiva recupera el modelo del curso para que el mapa log\'istico discreto no aparezca como una f\'ormula aislada.
+Sea \(p\) un punto fijo de una función \(f\) diferenciable en una vecindad de \(p\). Para \(h\) próximo a \(0\),
+\[
+f(p+h)=p+f'(p)h+R_p(h),
+\qquad
+\lim_{h\to0}\frac{R_p(h)}{h}=0.
+\]
+Si \(e_n=x_n-p\), entonces
+\[
+e_{n+1}=f'(p)e_n+R_p(e_n).
+\]
+El término lineal describe la contracción o expansión local cuando \(\lvert f'(p)\rvert\neq1\); si \(\lvert f'(p)\rvert=1\), el resto u otro argumento determinan la estabilidad \cite{Devaney1989}.
 
-\section{Diapositiva 11: Normalizaci\'on del log\'istico}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Cambios: $u=N/K$ y $\tau=rt$.
-    \item Forma adimensional: $\dfrac{du}{d\tau}=u(1-u)$.
-    \item La normalizaci\'on concentra la din\'amica esencial.
-\end{itemize}
-\textbf{Descripci\'on oral.} La adimensionalizaci\'on del curso muestra que muchos modelos distintos comparten una misma estructura. Aqu\'i prepara la entrada a la versi\'on discreta.
+\subsection{Criterio de estabilidad}
 
-\section{Diapositiva 12: Log\'istico discreto}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Mapa: $\Fmu(x)=\mu x(1-x)$.
-    \item Iteraci\'on: $x_{n+1}=\Fmu(x_n)$.
-    \item Par\'ametro: $\mu$ controla la din\'amica.
-\end{itemize}
-\textbf{Descripci\'on oral.} El mapa log\'istico no se resuelve como EDO. Se itera, se observan \textit{\'orbitas} y se estudia c\'omo cambia el comportamiento al variar $\mu$.
+\begin{teorema}[Criterio de estabilidad para puntos fijos]
+\label{teo:estabilidad-punto-fijo}
+Sea \(J\subseteq\mathbb R\) un intervalo abierto, \(f\in C^1(J)\) y \(p\in J\) un punto fijo.
 
-\section{Diapositiva 13: Puntos fijos del log\'istico discreto}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Resolver $\Fmu(x)=x$.
-    \item $\mu x(1-x)=x$.
-    \item Puntos fijos: $x=0$ y $p_\mu=(\mu-1)/\mu$.
-\end{itemize}
-\textbf{Descripci\'on oral.} Este c\'alculo debe hacerse de forma breve, como se har\'ia con equilibrios en EDOs: primero se encuentran estados estacionarios y despu\'es se estudia su estabilidad.
+\begin{enumerate}
+    \item Si \(\lvert f'(p)\rvert<1\), entonces \(p\) es localmente asintóticamente estable.
+    \item Si \(\lvert f'(p)\rvert>1\), entonces \(p\) es inestable y localmente repulsor.
+    \item Si \(\lvert f'(p)\rvert=1\), el criterio no determina la estabilidad.
+\end{enumerate}
+\end{teorema}
 
-\section{Diapositiva 14: Estabilidad del log\'istico discreto}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Derivada: $\Fmu'(x)=\mu(1-2x)$.
-    \item En $0$: $\Fmu'(0)=\mu$.
-    \item En $p_\mu$: $\Fmu'(p_\mu)=2-\mu$.
-    \item $p_\mu$ es estable si $1<\mu<3$.
-\end{itemize}
-\textbf{Descripci\'on oral.} Se debe explicar que $\mu=3$ es especial porque $\Fmu'(p_\mu)=-1$, es decir, se pierde la estabilidad por el borde del criterio $|\Fmu'(p_\mu)|<1$.
+\begin{demostracion}
+Supongamos que \(\lvert f'(p)\rvert<1\) y elijamos \(q\) con
+\[
+\lvert f'(p)\rvert<q<1.
+\]
+Por la continuidad de \(f'\), existe \(\delta>0\) tal que el intervalo cerrado
+\[
+V=[p-\delta,p+\delta]\subset J
+\]
+satisface \(\lvert f'(x)\rvert\leq q\) para todo \(x\in V\). El segmento entre \(x\in V\) y \(p\) está contenido en \(V\); por el teorema del valor medio,
+\[
+\lvert f(x)-p\rvert
+=\lvert f(x)-f(p)\rvert
+\leq q\lvert x-p\rvert
+\leq q\delta<\delta.
+\]
+Por tanto, \(f(V)\subseteq V\). La iteración de la desigualdad proporciona
+\[
+\lvert x_n-p\rvert\leq q^n\lvert x_0-p\rvert
+\]
+para \(x_0\in V\), y entonces \(x_n\to p\).
 
-\section{Diapositiva 15: Bifurcaci\'on}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item En el curso, una bifurcaci\'on cambia n\'umero o estabilidad de equilibrios.
-    \item En mapas, tambi\'en pueden cambiar ciclos peri\'odicos.
-    \item Para $\mu=3$, el punto fijo pierde estabilidad y aparece un ciclo de periodo $2$.
-\end{itemize}
-\textbf{Descripci\'on oral.} La idea es extender el concepto de bifurcaci\'on: ya no solo se bifurcan puntos de equilibrio; tambi\'en aparecen comportamientos peri\'odicos nuevos.
+Si \(\lvert f'(p)\rvert>1\), se eligen \(q>1\) y \(\delta>0\) tales que \(V\subset J\) y \(\lvert f'(x)\rvert\geq q\) en \(V\). Mientras \(x_n\in V\), el teorema del valor medio implica
+\[
+\lvert x_{n+1}-p\rvert\geq q\lvert x_n-p\rvert.
+\]
+Toda perturbación no nula suficientemente próxima a \(p\) abandona \(V\) después de un número finito de iteraciones. Por consiguiente, \(p\) es inestable.
 
-\section{Diapositiva 16: Duplicaci\'on de periodo}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Ruta: $1\to2\to4\to8\to\cdots$.
-    \item Cada duplicaci\'on cambia el atractor observado.
-    \item La cascada conduce a una regi\'on de comportamiento ca\'otico.
-\end{itemize}
-\textbf{Descripci\'on oral.} Se debe presentar como un fen\'omeno cualitativo: al aumentar el par\'ametro, el atractor deja de ser un punto, luego es un ciclo, despu\'es ciclos m\'as largos y finalmente comportamiento irregular.
+Cuando \(\lvert f'(p)\rvert=1\), ninguna de las dos estimaciones estrictas está disponible.
+\end{demostracion}
 
-\section{Diapositiva 17: Diagrama de bifurcaci\'on}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Eje horizontal: $\mu$.
-    \item Eje vertical: valores asint\'oticos de $x_n$.
-    \item Una rama: punto fijo; dos ramas: periodo $2$; muchas ramas: din\'amica compleja.
-\end{itemize}
-\textbf{Descripci\'on oral.} El diagrama debe explicarse como una herramienta de modelos: resume, para muchos valores del par\'ametro, el comportamiento a largo plazo del sistema.
+\begin{observacion}[Signo de la derivada]
+Las siguientes descripciones son locales y suponen que la trayectoria permanece en la vecindad donde \(f'\) conserva su signo. Si \(0<f'(p)<1\), las perturbaciones suficientemente pequeñas conservan su signo y decrecen en magnitud. Si \(-1<f'(p)<0\), alternan alrededor de \(p\) y convergen. Si \(f'(p)<-1\), alternan y aumentan en magnitud hasta abandonar la vecindad.
+\end{observacion}
 
-\section{Diapositiva 18: Map tent}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Definici\'on:
-    \[
-    \Tdos(x)=
-    \begin{cases}
-    2x, & 0\leq x\leq 1/2,\\
-    2(1-x), & 1/2\leq x\leq 1.
-    \end{cases}
-    \]
-    \item Es lineal por partes.
-    \item Tiene forma de tienda.
-\end{itemize}
-\textbf{Descripci\'on oral.} Este ejemplo debe introducirse como un modelo simplificado: conserva expansi\'on y plegamiento, pero evita parte de la complejidad algebraica del log\'istico.
+\section{Modelo logístico continuo}
+\label{sec:logistico-continuo}
 
-\section{Diapositiva 19: Codificaci\'on simb\'olica}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Dividir $[0,1]$ en izquierda y derecha:
-    \[
-    L=[0,1/2],\qquad R=[1/2,1].
-    \]
-    \item Cada \textit{\'orbita} produce una sucesi\'on de s\'imbolos.
-    \item La din\'amica puede estudiarse mediante sucesiones.
-\end{itemize}
-\textbf{Descripci\'on oral.} El punto conceptual es que una \textit{\'orbita} num\'erica se transforma en una palabra infinita. Esto abre la puerta a la din\'amica simb\'olica.
+\subsection{Formulación y comportamiento cualitativo}
 
-\section{Diapositiva 20: Cierre}
-\textbf{Contenido que debe aparecer.}
-\begin{itemize}
-    \item Herramientas del curso: equilibrio, estabilidad, linealizaci\'on, bifurcaci\'on y adimensionalizaci\'on.
-    \item Aportaci\'on de Devaney: funciones iteradas como fuente de din\'amica ca\'otica.
-    \item Mensaje final: modelos simples pueden producir comportamiento complejo.
-\end{itemize}
-\textbf{Descripci\'on oral.} El cierre debe evitar introducir conceptos nuevos. Solo debe conectar el recorrido completo: del modelo continuo al mapa discreto, del punto fijo al caos.
+Sea \(N(t)\geq0\) el tamaño de una población. El modelo logístico continuo supone una tasa intrínseca de crecimiento \(r>0\) y una capacidad de carga \(K>0\):
+\[
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right).
+\]
+El término \(rN\) expresa crecimiento proporcional y el factor \(1-N/K\) reduce la tasa conforme \(N\) se aproxima a \(K\) \cite{ApuntesMM1_2026,NagleSaffSnider2018}.
 
-\section*{Referencias base}
-\begin{thebibliography}{9}
-\bibitem{ApuntesMM1}
-Apuntes de Modelos Matem\'aticos I. Transcripci\'on, notas de clase y complementos con Nagle, Saff \& Snider, 7a ed. Mayo--junio de 2026.
+Los equilibrios son \(N=0\) y \(N=K\). El equilibrio \(N=0\) representa la extinción, mientras que \(N=K\) corresponde a la capacidad de carga. El signo del lado derecho satisface
+\[
+rN\left(1-\frac{N}{K}\right)>0
+\quad\text{si }0<N<K,
+\]
+y
+\[
+rN\left(1-\frac{N}{K}\right)<0
+\quad\text{si }N>K.
+\]
+Dentro del espacio de estados poblacional, \(N=0\) es inestable y \(N=K\) es asintóticamente estable \cite{ApuntesMM1_2026}.
 
-\bibitem{Devaney}
-Devaney, R. L. \emph{An Introduction to Chaotic Dynamical Systems}. Second Edition. Addison-Wesley / Westview Press.
-\end{thebibliography}
+\subsection{Normalización}
+
+Las dimensiones son \([N]=[K]\), \([r]=T^{-1}\) y \([t]=T\). Con
+\[
+u=\frac{N}{K},
+\qquad
+\tau=rt,
+\]
+la variable \(u\) mide la proporción de la capacidad de carga ocupada. Como \(N(t)=Ku(\tau)\), la regla de la cadena da
+\[
+\frac{dN}{dt}=Kr\frac{du}{d\tau}.
+\]
+La sustitución en la ecuación logística produce
+\[
+Kr\frac{du}{d\tau}=rKu(1-u),
+\]
+y, puesto que \(rK>0\),
+\[
+\frac{du}{d\tau}=u(1-u).
+\]
+La normalización elimina \(r\) y \(K\), y transforma los equilibrios \(N=0\) y \(N=K\) en \(u=0\) y \(u=1\), respectivamente \cite{ApuntesMM1_2026}.
+
+\begin{observacion}[Relación con el modelo discreto]
+El modelo continuo y la recurrencia logística incorporan una dependencia cuadrática de la densidad. Sin embargo, definen reglas de evolución distintas: la recurrencia no se obtiene al muestrear en tiempos enteros la solución de la ecuación diferencial.
+\end{observacion}
+
+\section{Modelo logístico discreto}
+\label{sec:logistico-discreto}
+
+\subsection{Definición del mapa logístico}
+
+Sea \(x_n\in[0,1]\) el estado normalizado durante el periodo \(n\), de modo que un incremento de \(n\) representa un paso temporal del modelo. El factor \(x_n(1-x_n)\) combina crecimiento proporcional con una reducción dependiente de la densidad. Para \(\mu>0\), el mapa logístico es
+\[
+F_\mu(x)=\mu x(1-x),
+\]
+y la evolución queda definida por
+\[
+x_{n+1}=F_\mu(x_n).
+\]
+El parámetro \(\mu\) escala el estado siguiente y coincide con la pendiente del mapa en el origen, pues \(F_\mu'(0)=\mu\) \cite{HirschSmaleDevaney2013}.
+
+Para \(x\in[0,1]\),
+\[
+0\leq x(1-x)\leq\frac14.
+\]
+Por tanto, si \(0<\mu\leq4\),
+\[
+0\leq F_\mu(x)\leq\frac{\mu}{4}\leq1,
+\]
+de modo que \(F_\mu([0,1])\subseteq[0,1]\).
+
+\subsection{Puntos fijos}
+
+La ecuación \(F_\mu(x)=x\) equivale a
+\[
+x\bigl(\mu(1-x)-1\bigr)=0.
+\]
+Sus soluciones son
+\[
+p_0=0,
+\qquad
+p_\mu=\frac{\mu-1}{\mu}.
+\]
+El punto \(p_0\) existe para todo \(\mu>0\). El valor \(p_\mu\) pertenece a \([0,1]\) si \(\mu\geq1\), pero es distinto de \(p_0\) y positivo exactamente cuando \(\mu>1\). Para \(\mu=1\), ambas expresiones representan el origen.
+
+\subsection{Estabilidad de los puntos fijos}
+
+El polinomio \(F_\mu\) está definido y es diferenciable en \(\mathbb R\); por ello, el Teorema~\ref{teo:estabilidad-punto-fijo} puede aplicarse al origen aunque \(0\) sea un extremo del espacio de estados \([0,1]\). Como
+\[
+F_\mu'(x)=\mu(1-2x),
+\]
+el origen es localmente asintóticamente estable si \(0<\mu<1\) e inestable si \(\mu>1\).
+
+Para \(\mu=1\), el criterio lineal no decide. No obstante, si \(x\in(0,1)\),
+\[
+0<F_1(x)=x(1-x)<x.
+\]
+Toda trayectoria con \(x_0\in(0,1)\) decrece hacia un límite \(L\geq0\). La igualdad \(L=F_1(L)\) implica \(L=0\); por tanto, el origen es asintóticamente estable por la derecha respecto de \([0,1]\).
+
+Para el punto fijo positivo,
+\[
+F_\mu'(p_\mu)
+=\mu\left(1-2\frac{\mu-1}{\mu}\right)
+=2-\mu.
+\]
+En consecuencia, \(p_\mu\) es localmente asintóticamente estable para \(1<\mu<3\) e inestable para \(\mu>3\) \cite{HirschSmaleDevaney2013,Devaney1989}. Para condiciones iniciales suficientemente próximas a \(p_\mu\), la convergencia conserva el lado respecto del punto fijo si \(1<\mu<2\) y alterna entre ambos lados si \(2<\mu<3\).
+
+\subsection{Primera bifurcación y puntos periódicos}
+
+\begin{definicion}[Punto periódico]
+Sea \(f\colon I\to I\). Un punto \(x\in I\) tiene periodo mínimo \(k\geq1\) si
+\[
+f^k(x)=x
+\]
+y \(f^j(x)\neq x\) para \(1\leq j<k\).
+\end{definicion}
+
+Una órbita de periodo \(2\) consta de puntos distintos \(q_1,q_2\) tales que
+\[
+F_\mu(q_1)=q_2,
+\qquad
+F_\mu(q_2)=q_1.
+\]
+En \(\mu=3\), el multiplicador del punto fijo positivo es
+\[
+F_3'(p_3)=-1,
+\]
+por lo que el criterio lineal deja de decidir. Al cruzar este valor, el punto fijo positivo pierde estabilidad y aparece un ciclo de periodo \(2\) \cite{Devaney1989,HirschSmaleDevaney2013}.
+
+\subsection{Duplicación de periodo}
+
+Al atravesar determinados valores críticos de \(\mu\), el atractor de la familia logística sigue la cascada principal
+\[
+1\longrightarrow2\longrightarrow4\longrightarrow8
+\longrightarrow\cdots.
+\]
+La sucesión describe duplicaciones de periodo, no el comportamiento de la familia para todo aumento del parámetro; también existen otros ciclos y regiones con dinámica distinta \cite{Devaney1989}.
+
+\subsection{Diagrama de bifurcación}
+
+La Figura~\ref{fig:bifurcacion-logistica} representa valores iterados retenidos después de descartar el transitorio. Para cada uno de \(6000\) valores de \(\mu\) en \([2.5,4]\), la imagen parte de \(x_0=0.5\), descarta \(1000\) iteraciones y grafica las \(900\) siguientes.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.82\textwidth]{logistic-map-fig/logistic_map.png}
+    \caption{Valores iterados del mapa logístico después del transitorio para \(2.5\leq\mu\leq4\).}
+    \label{fig:bifurcacion-logistica}
+\end{figure}
+
+Con la resolución y la condición inicial empleadas, una, dos o cuatro ramas constituyen evidencia numérica compatible con atractores de periodos \(1\), \(2\) o \(4\), respectivamente. Una nube densa no basta para distinguir entre ciclos de periodo alto, resolución insuficiente y comportamiento aperiódico. El Código~\ref{lst:bifurcacion-logistica}, incluido en el apéndice, implementa el mismo procedimiento con menos valores del parámetro y menos iteraciones retenidas.
+
+\FloatBarrier
+
+\section{Map tent}
+\label{sec:map-tent}
+
+\subsection{Definición}
+
+El \emph{map tent} es una función continua y lineal por partes en \([0,1]\). En el caso \(\mu=2\),
+\[
+T_2(x)=
+\begin{cases}
+2x, & 0\leq x\leq \dfrac12,\\[2mm]
+2(1-x), & \dfrac12\leq x\leq1.
+\end{cases}
+\]
+Las ramas coinciden en \(x=1/2\), donde \(T_2(1/2)=1\), y satisfacen \(T_2(0)=T_2(1)=0\). Por tanto, \(T_2([0,1])=[0,1]\) \cite{Devaney1989}.
+
+En cada rama lineal, dos puntos suficientemente próximos permanecen separados por el doble de su distancia mientras sus imágenes se calculan con la misma expresión. El cambio de signo entre las pendientes combina esta expansión local con el plegamiento global del intervalo.
+
+\subsection{Familia parametrizada}
+
+Para \(0<\mu\leq2\), la familia se define por
+\[
+T_\mu(x)=\mu\min\{x,1-x\}
+=
+\begin{cases}
+\mu x, & 0\leq x\leq \dfrac12,\\[2mm]
+\mu(1-x), & \dfrac12\leq x\leq1.
+\end{cases}
+\]
+Su máximo es \(T_\mu(1/2)=\mu/2\), de modo que \(T_\mu([0,1])\subseteq[0,1]\). El parámetro controla la altura y la magnitud de las pendientes. La Figura~\ref{fig:familia-tent} compara tres valores del parámetro.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.78\textwidth]{tent-map-fig/tent_function.png}
+    \caption{Gráficas de \(T_\mu\) para \(\mu=1\), \(\mu=1.5\) y \(\mu=2\).}
+    \label{fig:familia-tent}
+\end{figure}
+
+\subsection{Codificación simbólica}
+
+La codificación se considera para \(T_2\). Con la partición
+\[
+L=\left[0,\frac12\right],
+\qquad
+R=\left(\frac12,1\right],
+\]
+el itinerario de \(x_0\in[0,1]\) es la sucesión \(S(x_0)=s_0s_1s_2\cdots\), donde
+\[
+s_n=
+\begin{cases}
+L, & T_2^n(x_0)\in L,\\
+R, & T_2^n(x_0)\in R.
+\end{cases}
+\]
+El itinerario conserva el orden de las regiones visitadas, aunque no determina por sí solo los valores numéricos escritos en la trayectoria. Así, la órbita queda representada por una sucesión de dos símbolos \cite{Devaney1989,HirschSmaleDevaney2013}.
+
+\subsection{Diagrama numérico de órbitas}
+
+La Figura~\ref{fig:orbitas-tent} muestra el estado obtenido tras \(1000\) iteraciones para una malla de \(6000\) valores de \(\mu\in[1,2]\) y \(2000\) condiciones iniciales en \([0,1]\). Cada punto representa un único estado final asociado con un par formado por el parámetro y la condición inicial.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.82\textwidth]{tent-map-fig/tent_map.png}
+    \caption{Estados de la familia \(T_\mu\) después de \(1000\) iteraciones.}
+    \label{fig:orbitas-tent}
+\end{figure}
+
+La figura ilustra numéricamente cómo se amplía el conjunto de valores alcanzados al aumentar \(\mu\). No constituye por sí sola una prueba de periodicidad o comportamiento caótico. El Código~\ref{lst:orbitas-tent} reproduce el procedimiento con \(2000\) valores del parámetro y \(500\) condiciones iniciales.
+
+\FloatBarrier
+
+\section{Conclusión}
+\label{sec:conclusion}
+
+La estacionariedad se expresa mediante equilibrios en tiempo continuo y puntos fijos en tiempo discreto. La linealización determina la estabilidad local cuando el multiplicador tiene magnitud distinta de \(1\), bajo las hipótesis del Teorema~\ref{teo:estabilidad-punto-fijo} \cite{ApuntesMM1_2026,HirschSmaleDevaney2013}.
+
+En la familia logística, el punto fijo positivo pierde estabilidad al cruzar \(\mu=3\) y la cascada principal continúa mediante duplicaciones de periodo. El \emph{map tent} separa la expansión lineal dentro de cada rama del plegamiento global y permite representar la trayectoria de \(T_2\) mediante dos símbolos \cite{Devaney1989}.
+
+\appendix
+\section{Códigos numéricos}
+\label{sec:codigos}
+
+Los códigos siguientes reducen la resolución de las imágenes para exponer el procedimiento numérico de forma legible. Las figuras del cuerpo utilizan los archivos de alta resolución generados por los scripts \texttt{main.py} de cada directorio.
+
+\subsection{Mapa logístico}
+
+\lstinputlisting[
+    caption={Versión reducida del algoritmo para el diagrama logístico.},
+    label={lst:bifurcacion-logistica}
+]{logistic-map-fig/logistic_simple.py}
+
+\subsection{Map tent}
+
+\lstinputlisting[
+    caption={Versión reducida del algoritmo para el diagrama de órbitas del \emph{map tent}.},
+    label={lst:orbitas-tent}
+]{tent-map-fig/bifurcacion_simple.py}
+
+\bibliographystyle{plain}
+\bibliography{ref}
 
 \end{document}

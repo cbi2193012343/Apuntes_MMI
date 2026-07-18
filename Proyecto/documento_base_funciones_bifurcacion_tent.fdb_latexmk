@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex documento_base_funciones_bifurcacion_tent"] 1784342180.6266 "documento_base_funciones_bifurcacion_tent.aux" "documento_base_funciones_bifurcacion_tent.bbl" "documento_base_funciones_bifurcacion_tent" 1784342184.85431 0
+["bibtex documento_base_funciones_bifurcacion_tent"] 1784342903.16592 "documento_base_funciones_bifurcacion_tent.aux" "documento_base_funciones_bifurcacion_tent.bbl" "documento_base_funciones_bifurcacion_tent" 1784342907.48548 0
   "./ref.bib" 1784271687.6488 2106 c7fd7357147b28c5e6ae703daea6fb50 ""
   "/nix/store/mxwgxm4zzpx6w517dql0av2pkrcdqq38-texlive-2025-r78234-final-env-texmfdist/bibtex/bst/base/plain.bst" 1 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "documento_base_funciones_bifurcacion_tent.aux" 1784342184.59757 7889 dbd935798026d73a17aa886331945b48 "pdflatex"
+  "documento_base_funciones_bifurcacion_tent.aux" 1784342907.23896 7889 0c5d19058dd454b66b6a0052fd9512bd "pdflatex"
   (generated)
   "documento_base_funciones_bifurcacion_tent.bbl"
   "documento_base_funciones_bifurcacion_tent.blg"
   (rewritten before read)
-["pdflatex"] 1784342180.65266 "documento_base_funciones_bifurcacion_tent.tex" "documento_base_funciones_bifurcacion_tent.pdf" "documento_base_funciones_bifurcacion_tent" 1784342184.85451 0
+["pdflatex"] 1784342903.19405 "documento_base_funciones_bifurcacion_tent.tex" "documento_base_funciones_bifurcacion_tent.pdf" "documento_base_funciones_bifurcacion_tent" 1784342907.48572 0
   "/home/admin/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1784271943.35156 28952 6d36d4e8c527adc273af9cf6e69c5809 ""
   "/home/admin/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1784271944.15338 31928 ea72dadc746cfe35870faf88746f8160 ""
   "/home/admin/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk" 1784271944.81037 40112 cc27559ee30192513711d080d37ded7a ""
@@ -203,10 +203,10 @@
   "/nix/store/mxwgxm4zzpx6w517dql0av2pkrcdqq38-texlive-2025-r78234-final-env-texmfdist/tex/latex/tools/calc.sty" 1 10374 2ffd4f27c7f90b8a300608069537743c ""
   "/nix/store/mxwgxm4zzpx6w517dql0av2pkrcdqq38-texlive-2025-r78234-final-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/mxwgxm4zzpx6w517dql0av2pkrcdqq38-texlive-2025-r78234-final-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "documento_base_funciones_bifurcacion_tent.aux" 1784342184.59757 7889 dbd935798026d73a17aa886331945b48 "pdflatex"
-  "documento_base_funciones_bifurcacion_tent.bbl" 1784342180.64561 788 995e78f5d13a834f54192a4f2311a22d "bibtex documento_base_funciones_bifurcacion_tent"
-  "documento_base_funciones_bifurcacion_tent.out" 1784342184.59957 5058 11cf65a6f152ad914622ea42280b03e0 "pdflatex"
-  "documento_base_funciones_bifurcacion_tent.tex" 1784342168.46872 23174 ae6adff40f3ce8073d0cb30c103b6e19 ""
+  "documento_base_funciones_bifurcacion_tent.aux" 1784342907.23896 7889 0c5d19058dd454b66b6a0052fd9512bd "pdflatex"
+  "documento_base_funciones_bifurcacion_tent.bbl" 1784342903.187 788 995e78f5d13a834f54192a4f2311a22d "bibtex documento_base_funciones_bifurcacion_tent"
+  "documento_base_funciones_bifurcacion_tent.out" 1784342907.24196 5058 11cf65a6f152ad914622ea42280b03e0 "pdflatex"
+  "documento_base_funciones_bifurcacion_tent.tex" 1784342892.27509 23194 94d4fb071b6554cdbfae078443731491 ""
   "logistic-map-fig/logistic_map.png" 1784271687.6138 4779809 05064aa9ebae400911e595d94b31904f ""
   "logistic-map-fig/logistic_simple.py" 1784271687.6138 515 6b78afd0cc11bfd9d67b54d96e266cc9 ""
   "tent-map-fig/bifurcacion_simple.py" 1784271687.6488 522 203c82c3130fa4a4a6a6501d48caac6f ""

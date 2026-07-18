@@ -78,7 +78,9 @@ El objetivo es estudiar cómo una regla de evolución en tiempo discreto puede
 producir estados estacionarios, órbitas periódicas, bifurcaciones y
 comportamiento caótico. El análisis utiliza equilibrio, estabilidad,
 linealización y adimensionalización para relacionar los modelos continuos del
-curso con las familias logística y \emph{map tent}.
+curso con las familias logística y \emph{map tent}\footnote{En la literatura,
+esta función se conoce como \emph{tent map} o mapa tienda; en este documento se
+emplea la denominación \emph{map tent}, utilizada en el curso.}.
 
 
 \section{Funciones iteradas}
@@ -147,7 +149,7 @@ Entre los comportamientos relevantes se encuentran la convergencia asintótica, 
 \subsection{Equilibrio continuo y punto fijo discreto}
 
 En un modelo continuo \(dy/dt=f(y)\), a un punto \(y^*\) se le llama equilibrio,
-o punto fijo,si \(f(y^*)=0\). En los sistemas discretos, el concepto análogo es
+o punto fijo, si \(f(y^*)=0\). En los sistemas discretos, el concepto análogo es
 el punto fijo de una función \(f\), definido como sigue.
 
 \begin{definicion}[Punto fijo]
@@ -169,14 +171,31 @@ Si \(x_0=p\), entonces \(x_n=f^n(p)=p\) para todo \(n\in\mathbb N_0\). Gráficam
         \draw[thick,blue] plot[domain=0:1,samples=100]
             (\x,{2*\x*(1-\x)})
             node[below right] {$y=F_2(x)$};
-        \filldraw[red] (0,0) circle (0.8pt)
+        \filldraw[red] (0,0) circle (2pt)
             node[below right] {$p_0$};
-        \filldraw[red] (0.5,0.5) circle (0.8pt)
+        \filldraw[red] (0.5,0.5) circle (2pt)
             node[above left] {$p_2$};
     \end{tikzpicture}
     \caption{Puntos fijos del mapa \(F_2\) como intersecciones con la recta \(y=x\).}
     \label{fig:punto-fijo-interseccion}
 \end{figure}
+
+\subsection{Puntos periódicos}
+
+\begin{definicion}[Punto periódico]
+\label{def:punto-periodico}
+Sea \(f\colon I\to I\). Un punto \(x\in I\) tiene periodo mínimo \(k\geq1\) si
+\[
+f^k(x)=x
+\]
+y \(f^j(x)\neq x\) para \(1\leq j<k\).
+\end{definicion}
+
+Un punto fijo es un punto periódico de periodo mínimo \(1\), y un punto de periodo mínimo \(k\) es un punto fijo de la iteración \(f^k\). Si \(f\) es diferenciable y \(x\) tiene periodo \(k\), la regla de la cadena proporciona
+\[
+(f^k)'(x)=\prod_{i=0}^{k-1}f'\bigl(f^i(x)\bigr),
+\]
+un producto que recorre la órbita y toma el mismo valor en todos sus puntos. Por ello, los criterios de estabilidad para puntos fijos se aplican a las órbitas periódicas a través de \(f^k\).
 
 \subsection{Linealización alrededor de un punto fijo}
 
@@ -190,7 +209,7 @@ Si \(e_n=x_n-p\), entonces
 \[
 e_{n+1}=f'(p)e_n+R_p(e_n).
 \]
-El término lineal describe la contracción o expansión local cuando \(\lvert f'(p)\rvert\neq1\); si \(\lvert f'(p)\rvert=1\), el resto u otro argumento determinan la estabilidad \cite{Devaney1989}.
+El término lineal describe la contracción o expansión local cuando \(\lvert f'(p)\rvert\neq1\); si \(\lvert f'(p)\rvert=1\), el resto u otro argumento determinan la estabilidad \cite{Devaney1989}. El procedimiento es paralelo a la linealización de \(dy/dt=f(y)\) alrededor de un equilibrio \(y^*\) estudiada en el curso: en el caso continuo, la estabilidad local depende del signo de \(f'(y^*)\); en el discreto, de la posición de \(\lvert f'(p)\rvert\) respecto de \(1\) \cite{ApuntesMM1_2026}.
 
 \subsection{Criterio de estabilidad}
 
@@ -350,17 +369,9 @@ F_\mu'(p_\mu)
 \]
 En consecuencia, \(p_\mu\) es localmente asintóticamente estable para \(1<\mu<3\) e inestable para \(\mu>3\) \cite{HirschSmaleDevaney2013,Devaney1989}. Para condiciones iniciales suficientemente próximas a \(p_\mu\), la convergencia conserva el lado respecto del punto fijo si \(1<\mu<2\) y alterna entre ambos lados si \(2<\mu<3\).
 
-\subsection{Primera bifurcación y puntos periódicos}
+\subsection{Primera bifurcación}
 
-\begin{definicion}[Punto periódico]
-Sea \(f\colon I\to I\). Un punto \(x\in I\) tiene periodo mínimo \(k\geq1\) si
-\[
-f^k(x)=x
-\]
-y \(f^j(x)\neq x\) para \(1\leq j<k\).
-\end{definicion}
-
-Una órbita de periodo \(2\) consta de puntos distintos \(q_1,q_2\) tales que
+Una órbita de periodo \(2\) (Definición~\ref{def:punto-periodico}) consta de puntos distintos \(q_1,q_2\) tales que
 \[
 F_\mu(q_1)=q_2,
 \qquad
@@ -401,21 +412,9 @@ Con la resolución y la condición inicial empleadas, una, dos o cuatro ramas co
 
 \subsection{Definición}
 
-El \emph{map tent} es una función continua y lineal por partes en \([0,1]\). En el caso \(\mu=2\),
-\[
-T_2(x)=
-\begin{cases}
-2x, & 0\leq x\leq \dfrac12,\\[2mm]
-2(1-x), & \dfrac12\leq x\leq1.
-\end{cases}
-\]
-Las ramas coinciden en \(x=1/2\), donde \(T_2(1/2)=1\), y satisfacen \(T_2(0)=T_2(1)=0\). Por tanto, \(T_2([0,1])=[0,1]\) \cite{Devaney1989}.
-
-En cada rama lineal, dos puntos suficientemente próximos permanecen separados por el doble de su distancia mientras sus imágenes se calculan con la misma expresión. El cambio de signo entre las pendientes combina esta expansión local con el plegamiento global del intervalo.
-
-\subsection{Familia parametrizada}
-
-Para \(0<\mu\leq2\), la familia se define por
+\begin{definicion}[Map tent]
+\label{def:map-tent}
+Para \(0<\mu\leq2\), el \emph{map tent} de parámetro \(\mu\) es la función continua y lineal por partes \(T_\mu\colon[0,1]\to[0,1]\) dada por
 \[
 T_\mu(x)=\mu\min\{x,1-x\}
 =
@@ -424,6 +423,8 @@ T_\mu(x)=\mu\min\{x,1-x\}
 \mu(1-x), & \dfrac12\leq x\leq1.
 \end{cases}
 \]
+\end{definicion}
+
 Su máximo es \(T_\mu(1/2)=\mu/2\), de modo que \(T_\mu([0,1])\subseteq[0,1]\). El parámetro controla la altura y la magnitud de las pendientes. La Figura~\ref{fig:familia-tent} compara tres valores del parámetro.
 
 \begin{figure}[htbp]
@@ -433,9 +434,30 @@ Su máximo es \(T_\mu(1/2)=\mu/2\), de modo que \(T_\mu([0,1])\subseteq[0,1]\). 
     \label{fig:familia-tent}
 \end{figure}
 
+En el caso extremo \(\mu=2\), las ramas coinciden en \(x=1/2\), donde \(T_2(1/2)=1\), y satisfacen \(T_2(0)=T_2(1)=0\); por tanto, \(T_2([0,1])=[0,1]\) \cite{Devaney1989}. En cada rama lineal, dos puntos suficientemente próximos permanecen separados por el doble de su distancia mientras sus imágenes se calculan con la misma expresión. El cambio de signo entre las pendientes combina esta expansión local con el plegamiento global del intervalo.
+
+\subsection{Puntos fijos y estabilidad}
+
+En la rama izquierda, la ecuación \(T_\mu(x)=x\) se reduce a \(\mu x=x\); si \(\mu\neq1\), su única solución es \(x=0\). En la rama derecha, \(\mu(1-x)=x\) da
+\[
+q_\mu=\frac{\mu}{1+\mu},
+\]
+que pertenece a \(\left(\frac12,1\right]\) exactamente cuando \(\mu>1\). En el caso \(\mu=1\), la rama izquierda es la identidad y todo punto de \([0,1/2]\) es fijo.
+
+Cada rama es lineal, con \(T_\mu'=\mu\) en la izquierda y \(T_\mu'=-\mu\) en la derecha; la derivada no existe en \(x=1/2\). Como ambos puntos fijos quedan en el interior de una rama, el Teorema~\ref{teo:estabilidad-punto-fijo} se aplica: para \(0<\mu<1\), el origen es el único punto fijo y es localmente asintóticamente estable; para \(\mu>1\), tanto \(0\) como \(q_\mu\) son repulsores.
+
+\begin{observacion}[Ausencia de órbitas atractoras]
+\label{obs:tent-sin-atractoras}
+Para \(\mu>1\), \(\lvert T_\mu'(x)\rvert=\mu>1\) en todo punto donde la derivada existe. Por la regla de la cadena, el multiplicador de cualquier órbita periódica (Definición~\ref{def:punto-periodico}) que no pase por \(x=1/2\) tiene magnitud \(\mu^k>1\). En consecuencia, la familia no posee puntos fijos ni órbitas periódicas atractoras \cite{Devaney1989}.
+\end{observacion}
+
 \subsection{Codificación simbólica}
 
-La codificación se considera para \(T_2\). Con la partición
+La codificación se considera para \(T_2\).
+
+\begin{definicion}[Itinerario]
+\label{def:itinerario}
+Con la partición
 \[
 L=\left[0,\frac12\right],
 \qquad
@@ -449,9 +471,13 @@ L, & T_2^n(x_0)\in L,\\
 R, & T_2^n(x_0)\in R.
 \end{cases}
 \]
+\end{definicion}
+
 El itinerario conserva el orden de las regiones visitadas, aunque no determina por sí solo los valores numéricos escritos en la trayectoria. Así, la órbita queda representada por una sucesión de dos símbolos \cite{Devaney1989,HirschSmaleDevaney2013}.
 
 \subsection{Diagrama numérico de órbitas}
+
+Este diagrama emplea una estrategia distinta a la de la Figura~\ref{fig:bifurcacion-logistica}, y la diferencia es consecuencia de la Observación~\ref{obs:tent-sin-atractoras}: para \(\mu>1\) no existe órbita atractora a la cual converger, de modo que descartar un transitorio y graficar la cola de una sola órbita no produce un conjunto estable. En su lugar, se barre el espacio de estados.
 
 La Figura~\ref{fig:orbitas-tent} muestra el estado obtenido tras \(1000\) iteraciones para una malla de \(6000\) valores de \(\mu\in[1,2]\) y \(2000\) condiciones iniciales en \([0,1]\). Cada punto representa un único estado final asociado con un par formado por el parámetro y la condición inicial.
 
@@ -462,7 +488,7 @@ La Figura~\ref{fig:orbitas-tent} muestra el estado obtenido tras \(1000\) iterac
     \label{fig:orbitas-tent}
 \end{figure}
 
-La figura ilustra numéricamente cómo se amplía el conjunto de valores alcanzados al aumentar \(\mu\). No constituye por sí sola una prueba de periodicidad o comportamiento caótico. El Código~\ref{lst:orbitas-tent} reproduce el procedimiento con \(2000\) valores del parámetro y \(500\) condiciones iniciales.
+La figura ilustra numéricamente cómo se amplía el conjunto de valores alcanzados al aumentar \(\mu\). Las bandas llenas, en lugar de ramas delgadas como las de la Figura~\ref{fig:bifurcacion-logistica}, reflejan la ausencia de atractores periódicos. La figura no constituye por sí sola una prueba de periodicidad o comportamiento caótico. El Código~\ref{lst:orbitas-tent} reproduce el procedimiento con \(2000\) valores del parámetro y \(500\) condiciones iniciales.
 
 \FloatBarrier
 
@@ -471,13 +497,16 @@ La figura ilustra numéricamente cómo se amplía el conjunto de valores alcanza
 
 La estacionariedad se expresa mediante equilibrios en tiempo continuo y puntos fijos en tiempo discreto. La linealización determina la estabilidad local cuando el multiplicador tiene magnitud distinta de \(1\), bajo las hipótesis del Teorema~\ref{teo:estabilidad-punto-fijo} \cite{ApuntesMM1_2026,HirschSmaleDevaney2013}.
 
-En la familia logística, el punto fijo positivo pierde estabilidad al cruzar \(\mu=3\) y la cascada principal continúa mediante duplicaciones de periodo. El \emph{map tent} separa la expansión lineal dentro de cada rama del plegamiento global y permite representar la trayectoria de \(T_2\) mediante dos símbolos \cite{Devaney1989}.
+En la familia logística, el punto fijo positivo pierde estabilidad al cruzar \(\mu=3\) y la cascada principal continúa mediante duplicaciones de periodo. El \emph{map tent} separa la expansión lineal dentro de cada rama del plegamiento global y permite representar la trayectoria de \(T_2\) mediante dos símbolos \cite{Devaney1989}. Las dos familias no son independientes: \(T_2\) y \(F_4\) son conjugadas mediante el cambio de variables \(h(x)=\sin^2(\pi x/2)\), de modo que la dinámica de una se traduce en la de la otra \cite{Devaney1989}.
 
 \appendix
 \section{Códigos numéricos}
 \label{sec:codigos}
 
-Los códigos siguientes reducen la resolución de las imágenes para exponer el procedimiento numérico de forma legible. Las figuras del cuerpo utilizan los archivos de alta resolución generados por los scripts \texttt{main.py} de cada directorio.
+Los códigos siguientes reducen la resolución de las imágenes para exponer el procedimiento numérico de forma legible. Las figuras del cuerpo se generan con versiones de alta resolución de estos mismos códigos, disponibles, junto con explicaciones detalladas, en el cuaderno de Google Colab que acompaña a este documento:
+\begin{center}
+\url{https://drive.google.com/file/d/1-AVt5kWdk2OKBXLUGhp8r0Pf68FKUzd3/view?usp=sharing}
+\end{center}
 
 \subsection{Mapa logístico}
 

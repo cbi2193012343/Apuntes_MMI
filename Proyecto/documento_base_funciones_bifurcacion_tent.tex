@@ -52,23 +52,43 @@
 \begin{document}
 \maketitle
 
-El objetivo es estudiar cómo una regla de evolución en tiempo discreto puede producir estados estacionarios, órbitas periódicas, bifurcaciones y comportamiento caótico. El análisis utiliza equilibrio, estabilidad, linealización y adimensionalización para relacionar los modelos continuos del curso con las familias logística y \emph{map tent}.
+\section{Introducción}
+\label{sec:introduccion}
 
-\section{Del tiempo continuo al tiempo discreto}
-\label{sec:continuo-discreto}
+En este curso, se han estudiado modelos de evolución en tiempo continuo, como el
+crecimiento de una población o la temperatura de un cuerpo. Las ecuaciones
+diferenciales ordinarias que describen estos modelos son de primer orden y
+autónomas. Sin embargo, muchos fenómenos naturales y artificiales pueden ser
+modelados mediante reglas de evolución en tiempo discreto, incluso los sistemas
+que ya se han analizado en el curso. Para algunas aplicaciones, el modelado a
+tiempo discreto es más natural y útil que el continuo, por ejemplo, el análisis
+de algoritmos de computación, los ciclos económicos y la criptografía.
 
-En un modelo autónomo escalar, el estado \(y(t)\) satisface
-\[
-\frac{dy}{dt}=g(y).
-\]
-El valor \(g(y(t))\) determina la tasa instantánea de cambio y depende sólo del estado actual \cite{ApuntesMM1_2026}. El modelo genera una curva solución \(t\mapsto y(t)\).
 
-En tiempo discreto, el estado se registra en periodos sucesivos y queda descrito por una sucesión \(n\mapsto x_n\). Una regla de actualización determina el paso de \(x_n\) a \(x_{n+1}\); su formulación matemática se establece en la sección siguiente \cite{HirschSmaleDevaney2013}.
+En ambos tipos de modelos, la evolución se describe mediante una ecuación
+de la forma \(dy/dt=f(y)\) o \(x_{n+1}=f(x_n)\), con \(f\) de derivada
+continua. La similitud podría sugerir que ambos casos admiten los mismos
+comportamientos. Sin embargo, el caso discreto presenta fenómenos que no se
+observan en el continuo escalar, como las órbitas periódicas no constantes y
+el caos.
+
+
+
+El objetivo es estudiar cómo una regla de evolución en tiempo discreto puede
+producir estados estacionarios, órbitas periódicas, bifurcaciones y
+comportamiento caótico. El análisis utiliza equilibrio, estabilidad,
+linealización y adimensionalización para relacionar los modelos continuos del
+curso con las familias logística y \emph{map tent}.
+
 
 \section{Funciones iteradas}
 \label{sec:funciones-iteradas}
 
 \subsection{Función como regla de evolución}
+
+En un modelo de tiempo discreto, el estado se registra en periodos sucesivos y
+queda descrito por una sucesión \(n\mapsto x_n\); una regla de actualización
+determina el paso de \(x_n\) a \(x_{n+1}\) \cite{HirschSmaleDevaney2013}.
 
 Sea \(I\subseteq\mathbb R\) el espacio de estados y sea \(f\colon I\to I\). La elección del codominio \(I\) expresa que cada actualización permanece en el espacio de estados. Dado \(x_0\in I\), la recurrencia
 \[
@@ -84,11 +104,18 @@ por lo que el análisis de varios periodos requiere componer \(f\) consigo misma
 
 \subsection{Iteraciones de una función}
 
-La iteración de orden cero es \(f^0=\operatorname{id}_I\). Para cada \(n\in\mathbb N_0\), se define recursivamente
+\begin{definicion}[Iteración de una función]
+\label{def:iteracion}
+Sea \(f\colon I\to I\). Las iteraciones de \(f\) se definen recursivamente por
 \[
-f^{n+1}=f\circ f^n.
+f^0=\operatorname{id}_I,
+\qquad
+f^{n+1}=f\circ f^n,
+\qquad n\in\mathbb N_0.
 \]
-Así, \(f^2=f\circ f\), \(f^3=f\circ f\circ f\) y
+\end{definicion}
+
+Así, \(f^2=f\circ f\), \(f^3=f\circ f\circ f\) y la recurrencia \(x_{n+1}=f(x_n)\) queda resuelta en términos de la condición inicial:
 \[
 x_n=f^n(x_0),\qquad n\in\mathbb N_0.
 \]
@@ -96,16 +123,20 @@ El superíndice denota composición reiterada, no una potencia algebraica de los
 
 \subsection{Trayectoria y órbita positiva}
 
-La trayectoria iniciada en \(x_0\) es la sucesión ordenada
+\begin{definicion}[Trayectoria y órbita positiva]
+\label{def:trayectoria-orbita}
+Sean \(f\colon I\to I\) y \(x_0\in I\). La trayectoria iniciada en \(x_0\) es la sucesión ordenada
 \[
 \bigl(f^n(x_0)\bigr)_{n\geq0}
 =
 \bigl(x_0,f(x_0),f^2(x_0),\ldots\bigr),
 \]
-mientras que su órbita positiva es el conjunto
+y la órbita positiva de \(x_0\) es el conjunto
 \[
 \orb(x_0)=\{f^n(x_0):n\in\mathbb N_0\}.
 \]
+\end{definicion}
+
 La trayectoria conserva el orden temporal; la órbita positiva registra los estados alcanzados.
 
 Entre los comportamientos relevantes se encuentran la convergencia asintótica, la periodicidad eventual y las trayectorias que no satisfacen ninguna de estas dos propiedades. Estas posibilidades no forman categorías disjuntas: una trayectoria eventualmente constante es periódica y convergente \cite{Devaney1989}.
@@ -115,7 +146,9 @@ Entre los comportamientos relevantes se encuentran la convergencia asintótica, 
 
 \subsection{Equilibrio continuo y punto fijo discreto}
 
-En la ecuación autónoma \(dy/dt=g(y)\), la estacionariedad se expresa mediante \(g(y^*)=0\); en ese caso, \(y(t)=y^*\) es una solución constante \cite{ApuntesMM1_2026}. En el sistema discreto, el concepto correspondiente es el punto fijo.
+En un modelo continuo \(dy/dt=f(y)\), a un punto \(y^*\) se le llama equilibrio,
+o punto fijo,si \(f(y^*)=0\). En los sistemas discretos, el concepto análogo es
+el punto fijo de una función \(f\), definido como sigue.
 
 \begin{definicion}[Punto fijo]
 Sea \(f\colon I\to I\). Un punto \(p\in I\) es fijo si

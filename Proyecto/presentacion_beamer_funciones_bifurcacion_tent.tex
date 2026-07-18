@@ -19,6 +19,7 @@
 \usecolortheme{default}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
+\setbeamerfont{caption}{size=\scriptsize}
 
 \lstset{
     language=Python,
@@ -149,7 +150,8 @@
         \item Interpretaci\'on: si el sistema llega a $p$, permanece en $p$.
         \item Gr\'aficamente: intersecci\'on entre $y=f(x)$ y $y=x$.
     \end{itemize}
-    \begin{center}
+    \begin{figure}
+    \centering
     \begin{tikzpicture}[scale=0.75]
         \draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
         \draw[->] (0,-0.2) -- (0,3.2) node[above] {$y$};
@@ -157,7 +159,8 @@
         \draw[thick,blue,domain=0:3.4,smooth] plot (\x,{1.8+0.55*(\x-1.8)+0.18*sin(120*(\x-1.8))});
         \filldraw[red] (1.8,1.8) circle (2pt) node[below right] {$p$};
     \end{tikzpicture}
-    \end{center}
+    \caption{Punto fijo $p$ como intersecci\'on de $y=f(x)$ con la recta $y=x$.}
+    \end{figure}
 \end{frame}
 
 % 8
@@ -304,8 +307,11 @@
 \begin{frame}[fragile]{Diagrama de bifurcaci\'on log\'istico}
     \begin{columns}[c]
         \column{0.56\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{logistic-map-fig/logistic_map.png}
+            \begin{figure}
+                \centering
+                \includegraphics[height=0.68\textheight]{logistic-map-fig/logistic_map.png}
+                \caption{Valores iterados de $F_\mu$ tras descartar el transitorio, $2.5\leq\mu\leq4$.}
+            \end{figure}
         \column{0.44\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\fontsize{6.3}{7.0}\selectfont]{logistic-map-fig/logistic_simple.py}
     \end{columns}
@@ -329,9 +335,11 @@
 
 % 18b
 \begin{frame}{La funci\'on $T_\mu(x)=\mu\min(x,1-x)$}
-    \begin{center}
-        \includegraphics[height=0.8\textheight]{tent-map-fig/tent_function.png}
-    \end{center}
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.70\textheight]{tent-map-fig/tent_function.png}
+        \caption{Gr\'aficas de $T_\mu$ para $\mu=1$, $\mu=1.5$ y $\mu=2$.}
+    \end{figure}
 \end{frame}
 
 % 19
@@ -354,8 +362,11 @@
 \begin{frame}[fragile]{Diagrama de bifurcaci\'on del map tent}
     \begin{columns}[c]
         \column{0.56\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{tent-map-fig/tent_map.png}
+            \begin{figure}
+                \centering
+                \includegraphics[height=0.68\textheight]{tent-map-fig/tent_map.png}
+                \caption{Estados finales de $T_\mu$ tras $1000$ iteraciones, para $2000$ condiciones iniciales por par\'ametro.}
+            \end{figure}
         \column{0.44\textwidth}
             \lstinputlisting[basicstyle=\ttfamily\fontsize{7.4}{8.2}\selectfont]{tent-map-fig/bifurcacion_simple.py}
     \end{columns}

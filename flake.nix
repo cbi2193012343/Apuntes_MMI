@@ -22,7 +22,7 @@
         amsmath amsfonts amscls mathtools
         # layout / tables / misc
         geometry enumitem parskip caption float booktabs
-        graphics hyperref url xcolor tools
+        graphics hyperref url xcolor tools placeins
       ]);
 
       plotPython = pkgs.python3.withPackages (ps: with ps; [
